@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'Àncora · Carta de begudes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1c3454;
+    --navy-ink:#16283f;
+    --gold:#c8963e;
+    --cream:#f5f0e6;
+    --linen:#efe7d6;
+    --slate: #5b6b7a;
+    --hair: rgba(28,52,84,0.18);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream); color:var(--navy);
+    font-family:'Jost', -apple-system, sans-serif;
+    font-size:18px; line-height:1.55;
+    background-image:
+      linear-gradient(rgba(27,58,63,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(27,58,63,0.045) 1px, transparent 1px);
+    background-size: 34px 34px;
+  }
+  h1,h2,h3{ font-family:'Playfair Display', Georgia, serif; font-weight:700; }
+  a{ color:inherit; }
+  .wrap{ max-width:920px; margin:0 auto; padding:0 22px; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; min-height:92vh; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; text-align:center; overflow:hidden;
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(200,150,62,0.10), transparent 60%),
+      linear-gradient(180deg, var(--cream) 0%, var(--linen) 100%);
+    color:var(--navy); padding:50px 20px;
+  }
+  .hero .grid-texture{
+    position:absolute; inset:0; z-index:0; opacity:0.5;
+    background-image:
+      linear-gradient(rgba(28,52,84,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(28,52,84,0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .hero .bg-anchor-big{
+    position:absolute; left:50%; top:50%; transform:translate(-50%,-48%);
+    width:78vh; height:78vh; opacity:0.05; color:var(--navy); z-index:0;
+  }
+  .hero .horizon{
+    position:absolute; bottom:0; left:0; width:100%; height:auto; color:var(--gold);
+    opacity:0.5; z-index:0;
+  }
+  .hero .stars{ position:absolute; inset:0; z-index:0; }
+  .hero .stars .star{ position:absolute; color:var(--gold); opacity:0.55; }
+  .hero::before{
+    content:''; position:absolute; inset:14px; border:2.5px solid var(--navy);
+    border-radius:2px; pointer-events:none; z-index:2;
+  }
+  .hero::after{
+    content:''; position:absolute; inset:20px; border:1px solid var(--gold);
+    border-radius:2px; pointer-events:none; z-index:2;
+  }
+  .hero .illus{ position:absolute; bottom:14%; opacity:0.85; z-index:0; color:var(--navy); }
+  .hero .illus-boat{ left:2%; width:min(26vw, 300px); }
+  .hero .illus-botanical{ right:4%; width:80px; bottom:16%; opacity:0.5; color:var(--navy); }
+  .hero .illus-mountain{ right:0; bottom:12%; width:min(30vw, 340px); opacity:0.55; color:var(--slate); }
+  .hero .bg-wave{ position:absolute; bottom:0; left:0; width:100%; opacity:0; z-index:0; }
+  .hero-content{ position:relative; z-index:1; }
+  .hero .emblem{
+    width:112px; height:112px; margin:0 auto 18px; position:relative;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .hero .emblem svg.rope{ position:absolute; inset:0; width:100%; height:100%; color:var(--gold); }
+  .hero .emblem svg.anchor-icon{ width:42px; height:42px; color:var(--navy); margin:0; opacity:1; }
+  .hero .eyebrow{
+    font-family:'Jost',sans-serif; font-size:13.5px; letter-spacing:4px; text-transform:uppercase;
+    color:var(--gold); margin-bottom:6px; font-weight:600;
+  }
+  .hero h1{ font-size:clamp(38px, 8vw, 70px); letter-spacing:1px; line-height:1; color:var(--navy); }
+  .hero .tagline{
+    margin-top:10px; font-size:16px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--navy); opacity:0.8; font-family:'Jost',sans-serif; font-weight:500;
+  }
+  .hero .divider-wave{ width:70px; height:12px; margin:16px auto 0; color:var(--gold); opacity:0.9; }
+  .scroll-cue{
+    position:absolute; bottom:34px; left:50%; transform:translateX(-50%);
+    font-size:11px; letter-spacing:2px; text-transform:uppercase; opacity:0.65;
+    display:flex; flex-direction:column; align-items:center; gap:8px; z-index:2; color:var(--navy);
+  }
+  .scroll-cue svg{ width:14px; height:18px; animation:bob 2s ease-in-out infinite; }
+  @keyframes bob{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(6px);} }
+
+  /* ---------- STICKY NAV ---------- */
+  .catnav{
+    position:sticky; top:0; z-index:20; background:rgba(245,240,230,0.94);
+    backdrop-filter:blur(6px); border-bottom:1px solid var(--hair);
+    max-width:920px; margin:0 auto;
+  }
+  .catnav .scroller{
+    display:flex; gap:8px; overflow-x:auto; padding:12px 22px; flex:1;
+    scrollbar-width:none;
+  }
+  .catnav .scroller::-webkit-scrollbar{ display:none; }
+  .catnav a{
+    flex:none; font-size:14px; letter-spacing:0.5px; text-decoration:none;
+    padding:7px 14px; border-radius:20px; border:1px solid var(--hair);
+    color:var(--slate); white-space:nowrap; transition:all .2s ease;
+  }
+  .catnav a.active{ background:var(--navy); color:var(--cream); border-color:var(--navy); }
+
+  .night-banner{
+    background:var(--navy); color:var(--gold); text-align:center;
+    font-family:'Jost',sans-serif; font-size:12.5px; font-weight:600; letter-spacing:0.5px;
+    padding:9px 20px; border-bottom:1px solid var(--gold);
+  }
+  .night-banner .moon{ margin-right:6px; }
+
+  /* ---------- WIDGET FLOTANTE: idiomas + Instagram ---------- */
+  .side-widget{
+    position:fixed; right:16px; bottom:16px; z-index:30;
+    background:var(--navy); border:1px solid var(--gold); border-radius:30px;
+    display:flex; align-items:center; gap:2px; padding:6px 8px;
+    box-shadow:0 4px 16px rgba(28,52,84,0.28);
+  }
+  .side-widget .lang-btn{
+    font-family:'Jost',sans-serif; font-size:10.5px; font-weight:600; letter-spacing:0.5px;
+    padding:6px 8px; border-radius:16px; border:none; background:none;
+    color:var(--cream); cursor:pointer; opacity:0.55; transition:all .15s ease;
+  }
+  .side-widget .lang-btn:hover{ opacity:1; }
+  .side-widget .lang-btn.active{ opacity:1; background:var(--gold); color:var(--navy-ink); }
+  .side-widget .sep{ width:1px; height:16px; background:rgba(245,240,230,0.25); margin:0 4px; }
+  .side-widget .ig-link{
+    display:flex; align-items:center; justify-content:center; width:26px; height:26px;
+    color:var(--cream); opacity:0.85; transition:opacity .15s ease;
+  }
+  .side-widget .ig-link:hover{ opacity:1; color:var(--gold); }
+  .side-widget .ig-link svg{ width:17px; height:17px; }
+  @media (max-width:480px){
+    .side-widget{ right:10px; bottom:10px; padding:5px 6px; }
+    .side-widget .lang-btn{ padding:5px 6px; font-size:10px; }
+  }
+
+  .group-block{ margin-bottom:22px; }
+  .group-name{
+    font-family:'Jost',sans-serif; font-size:13px; font-weight:600; letter-spacing:1.5px;
+    text-transform:uppercase; color:var(--slate); margin-bottom:8px; padding-bottom:4px;
+    border-bottom:1px solid var(--hair); position:relative; z-index:1;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section.category{ position:relative; padding:64px 0 20px; scroll-margin-top:64px; overflow:hidden; }
+  section.category:nth-of-type(even){ background:var(--linen); }
+  .section-watermark{
+    position:absolute; width:340px; height:340px; opacity:0.05; z-index:0;
+    top:-40px; right:-60px; pointer-events:none;
+  }
+  section.category:nth-of-type(even) .section-watermark{ right:auto; left:-60px; }
+  .leaf-sprig{
+    position:absolute; width:70px; height:230px; opacity:0.14; color:var(--slate);
+    top:10px; right:18px; z-index:0; pointer-events:none;
+  }
+  .section-header{
+    position:relative; z-index:1; display:flex; align-items:center; gap:14px; margin-bottom:26px;
+  }
+  .section-header .icon{ width:34px; height:34px; color:var(--gold); flex:none; }
+  .section-header h2{ font-size:30px; color:var(--navy); }
+  .tier-legend{
+    position:relative; z-index:1; font-size:14px; font-style:italic; color:var(--slate);
+    margin:-14px 0 22px 0; padding-left:48px;
+  }
+
+  .items-grid{ position:relative; z-index:1; display:grid; grid-template-columns:1fr 1fr; gap:2px 40px; }
+  .item{
+    display:flex; justify-content:space-between; align-items:baseline; gap:10px;
+    padding:9px 0; border-bottom:1px dotted var(--hair);
+  }
+  .item .name{ font-size:16.5px; }
+  .item .price{ font-size:16.5px; font-weight:600; color:var(--gold); white-space:nowrap; font-family:'Jost',sans-serif;}
+
+  .cocktail-item{ grid-column: 1 / -1; padding:12px 0; border-bottom:1px dotted var(--hair); }
+  .cocktail-item .row{ display:flex; justify-content:space-between; align-items:baseline; }
+  .cocktail-item .name{ font-size:19px; font-weight:600; font-family:'Playfair Display',serif; }
+  .cocktail-item .price{ font-size:18px; font-weight:700; color:var(--gold); }
+  .cocktail-item .desc{ font-size:14.5px; font-style:italic; color:var(--slate); margin-top:2px; max-width:640px; }
+
+  .tier-block{ grid-column:1/-1; margin-bottom:6px; }
+  .tier-block .tier-name{
+    font-size:13px; text-transform:uppercase; letter-spacing:1.5px; color:var(--navy);
+    background:var(--gold); color:var(--cream); display:inline-block;
+    padding:3px 10px; border-radius:12px; margin:14px 0 8px 0;
+  }
+
+  @media (max-width:640px){
+    .items-grid{ grid-template-columns:1fr; }
+    .section-header h2{ font-size:22px; }
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--navy); color:var(--cream); text-align:center; padding:56px 20px 40px;
+    position:relative; overflow:hidden;
+  }
+  footer .anchor-icon{ width:40px; height:40px; opacity:0.85; margin-bottom:14px; }
+  footer p{ font-size:13.5px; letter-spacing:1.5px; text-transform:uppercase; opacity:0.7; line-height:2; }
+  footer .leafwrap{ position:absolute; opacity:0.06; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="grid-texture"></div>
+  <svg class="bg-anchor-big" viewBox="0 0 100 100"><use href="#ic-anchor"/></svg>
+  <div class="stars">
+    <svg class="star" style="width:14px;height:14px;top:18%;left:16%;" viewBox="0 0 24 24" fill="currentColor"><use href="#ic-star"/></svg>
+    <svg class="star" style="width:10px;height:10px;top:28%;right:20%;" viewBox="0 0 24 24" fill="currentColor"><use href="#ic-star"/></svg>
+    <svg class="star" style="width:12px;height:12px;top:12%;right:32%;" viewBox="0 0 24 24" fill="currentColor"><use href="#ic-star"/></svg>
+    <svg class="star" style="width:9px;height:9px;top:20%;left:32%;" viewBox="0 0 24 24" fill="currentColor"><use href="#ic-star"/></svg>
+  </div>
+  <svg class="horizon" viewBox="0 0 400 30" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="1.2">
+    <path d="M0 20 Q 25 12, 50 20 T 100 20 T 150 20 T 200 20 T 250 20 T 300 20 T 350 20 T 400 20"/>
+    <path d="M0 26 Q 25 18, 50 26 T 100 26 T 150 26 T 200 26 T 250 26 T 300 26 T 350 26 T 400 26" opacity="0.5"/>
+  </svg>
+
+  <svg class="illus illus-boat" viewBox="0 0 300 180" fill="none" stroke="currentColor" stroke-width="1.6">
+    <use href="#ic-sailboat"/>
+  </svg>
+  <svg class="illus illus-mountain" viewBox="0 0 340 90" fill="none" stroke="currentColor" stroke-width="1.4">
+    <use href="#ic-mountains"/>
+  </svg>
+  <svg class="illus illus-botanical" viewBox="0 0 60 200" fill="none" stroke="currentColor" stroke-width="1.6">
+    <use href="#ic-leafsprig"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="emblem">
+      <svg class="rope" viewBox="0 0 100 100"><use href="#ic-rope"/></svg>
+      <svg class="anchor-icon" viewBox="0 0 100 100"><use href="#ic-anchor"/></svg>
+    </div>
+    <div class="eyebrow">Bar · Restaurant · Roses</div>
+    <h1>L'Àncora</h1>
+    <div class="tagline" id="tagline">Carta de begudes · 40 anys vora el mar</div>
+    <svg class="divider-wave" viewBox="0 0 70 12" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M0 6 Q 9 0, 17.5 6 T 35 6 T 52.5 6 T 70 6"/>
+    </svg>
+  </div>
+  <div class="scroll-cue">
+    <span id="scrolltext">Fes scroll</span>
+    <svg viewBox="0 0 14 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1 L7 17 L13 1"/></svg>
+  </div>
+</header>
+
+<nav class="catnav">
+  <div class="scroller" id="catnav"></div>
+</nav>
+
+<div class="night-banner" id="nightbanner" style="display:none;"></div>
+
+<main id="main"></main>
+
+<div class="side-widget" id="sidewidget"></div>
+
+<footer>
+  <svg class="anchor-icon" viewBox="0 0 100 100"><use href="#ic-anchor"/></svg>
+  <p id="footertext">L'Àncora Bar Restaurant · Roses, Costa Brava<br>40 anys vora el mar · 1986–2026</p>
+</footer>
+
+<!-- ================= ICONOS (línea, reutilizables) ================= -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="ic-anchor" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+      <circle cx="50" cy="16" r="8"/><line x1="50" y1="24" x2="50" y2="85"/>
+      <line x1="30" y1="34" x2="70" y2="34"/>
+      <path d="M20 55 C20 78, 38 90, 50 90 C62 90, 80 78, 80 55"/>
+      <line x1="20" y1="46" x2="20" y2="64"/><line x1="80" y1="46" x2="80" y2="64"/>
+    </symbol>
+    <symbol id="ic-wave" viewBox="0 0 400 40" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M0 20 Q 25 5, 50 20 T 100 20 T 150 20 T 200 20 T 250 20 T 300 20 T 350 20 T 400 20"/>
+      <path d="M0 30 Q 25 15, 50 30 T 100 30 T 150 30 T 200 30 T 250 30 T 300 30 T 350 30 T 400 30" opacity="0.6"/>
+    </symbol>
+    <symbol id="ic-coffee" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/>
+      <path d="M7 5c0-1 1-1 1-2M11 5c0-1 1-1 1-2M15 5c0-1 1-1 1-2"/>
+    </symbol>
+    <symbol id="ic-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c4-6 8-9 14-12"/>
+    </symbol>
+    <symbol id="ic-bubbles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <path d="M6 3v18M6 3c2 0 2 2 0 2s-2 2 0 2 2 2 0 2 0 0 0 0"/>
+      <circle cx="15" cy="8" r="1.4"/><circle cx="18" cy="13" r="1"/><circle cx="14.5" cy="16" r="1.2"/>
+      <path d="M9 21h9" />
+    </symbol>
+    <symbol id="ic-beer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <path d="M5 8h11v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8Z"/><path d="M16 10h2a2 2 0 0 1 0 4h-2"/>
+      <path d="M5 8c0-2.5 1-4.5 3-4.5S9 5 10 3.5c.6 1 1.7 1.7 3 1"/>
+    </symbol>
+    <symbol id="ic-cocktail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <path d="M4 4h16L12 13v7"/><path d="M8 21h8"/><path d="M6 4c2 3 4 4 6 4s4-1 6-4"/>
+    </symbol>
+    <symbol id="ic-mocktail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <path d="M6 9h12l-1.5 10a2 2 0 0 1-2 1.8h-5a2 2 0 0 1-2-1.8L6 9Z"/>
+      <path d="M6 9c0-3 2.5-5 6-5s6 2 6 5"/><path d="M12 4v-2"/>
+    </symbol>
+    <symbol id="ic-gin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <path d="M9 3c-2 3-4 6-4 10a7 7 0 0 0 14 0c0-4-2-7-4-10"/><path d="M6 12h12"/>
+      <path d="M9 3h6"/>
+    </symbol>
+    <symbol id="ic-barrel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <path d="M6 5c-1.3 2-1.3 12 0 14M18 5c1.3 2 1.3 12 0 14"/>
+      <path d="M6 5c2-1 10-1 12 0M6 19c2 1 10 1 12 0"/><path d="M4.5 9.5h15M4.5 14.5h15"/>
+    </symbol>
+    <symbol id="ic-whisky" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <rect x="6" y="6" width="12" height="14" rx="1"/><line x1="6" y1="14" x2="18" y2="14"/>
+      <circle cx="11" cy="11" r="1.6"/>
+    </symbol>
+    <symbol id="ic-vodka" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <path d="M9 3h6l1 4-2 3v10a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V10L8 7Z"/>
+    </symbol>
+    <symbol id="ic-brandy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <path d="M5 5c0 7 3 9 7 9s7-2 7-9"/><path d="M12 14v6M8 20h8"/><path d="M5 5h14"/>
+    </symbol>
+    <symbol id="ic-liqueur" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <path d="M10 3h4v4l3 4v8a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 7 19v-8l3-4Z"/><path d="M7.3 15h9.4"/>
+    </symbol>
+    <symbol id="ic-spritz" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <path d="M4 4h16L12 13v7"/><path d="M8 21h8"/><circle cx="16" cy="5" r="1.3"/><circle cx="18.5" cy="8" r="1"/>
+    </symbol>
+    <symbol id="ic-star" viewBox="0 0 24 24">
+      <path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z"/>
+    </symbol>
+    <symbol id="ic-rope" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.2">
+      <circle cx="50" cy="50" r="46" stroke-dasharray="4 3"/>
+      <circle cx="50" cy="50" r="40"/>
+    </symbol>
+    <symbol id="ic-sailboat" viewBox="0 0 300 180" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M60 150 C90 165, 210 165, 245 150 L225 150 C200 158, 105 158, 78 150 Z"/>
+      <path d="M150 145 L150 30"/>
+      <path d="M150 35 C150 70, 148 100, 150 145 L110 140 C115 100, 130 60, 150 35Z"/>
+      <path d="M155 45 C170 75, 178 105, 178 140 L155 140Z"/>
+      <path d="M20 130 C60 150, 240 150, 280 128" opacity="0.6"/>
+      <path d="M0 155 Q 20 148, 40 155 T 80 155 T 120 155 T 160 155 T 200 155 T 240 155 T 280 155 T 300 155" opacity="0.5"/>
+    </symbol>
+    <symbol id="ic-mountains" viewBox="0 0 340 90" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M0 85 L55 25 L95 60 L140 15 L200 85Z"/>
+      <path d="M170 85 L230 40 L270 68 L340 25 L340 85Z" opacity="0.7"/>
+      <path d="M0 85 L340 85" opacity="0.4"/>
+    </symbol>
+    <symbol id="ic-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+      <rect x="3" y="3" width="18" height="18" rx="5"/>
+      <circle cx="12" cy="12" r="4.2"/>
+      <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/>
+    </symbol>
+    <symbol id="ic-leafsprig" viewBox="0 0 60 200" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M30 0 C30 60 30 140 30 200"/>
+      <path d="M30 30 C10 40 5 55 10 65 C25 60 30 45 30 30Z"/>
+      <path d="M30 70 C50 80 55 95 50 105 C35 100 30 85 30 70Z"/>
+      <path d="M30 110 C10 120 5 135 10 145 C25 140 30 125 30 110Z"/>
+      <path d="M30 150 C50 160 55 175 50 185 C35 180 30 165 30 150Z"/>
+    </symbol>
+    <symbol id="ic-coffeebranch" viewBox="0 0 60 200" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M30 0 C30 60 30 140 30 200"/>
+      <ellipse cx="14" cy="45" rx="11" ry="15" transform="rotate(-20 14 45)"/>
+      <line x1="14" y1="34" x2="14" y2="56" transform="rotate(-20 14 45)"/>
+      <ellipse cx="46" cy="90" rx="11" ry="15" transform="rotate(20 46 90)"/>
+      <line x1="46" y1="79" x2="46" y2="101" transform="rotate(20 46 90)"/>
+      <ellipse cx="14" cy="140" rx="11" ry="15" transform="rotate(-20 14 140)"/>
+      <line x1="14" y1="129" x2="14" y2="151" transform="rotate(-20 14 140)"/>
+    </symbol>
+    <symbol id="ic-barley" viewBox="0 0 60 200" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M30 10 C30 70 30 140 30 195"/>
+      <path d="M30 25 L14 15 M30 25 L46 15"/>
+      <path d="M30 45 L14 35 M30 45 L46 35"/>
+      <path d="M30 65 L14 55 M30 65 L46 55"/>
+      <path d="M30 85 L14 75 M30 85 L46 75"/>
+      <path d="M30 105 L14 95 M30 105 L46 95"/>
+      <path d="M30 125 L14 115 M30 125 L46 115"/>
+    </symbol>
+    <symbol id="ic-sugarcane" viewBox="0 0 60 200" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M30 40 C30 90 30 150 30 195"/>
+      <path d="M18 60h24M18 90h24M18 120h24M18 150h24"/>
+      <path d="M30 40 C20 20 15 10 8 2 M30 40 C40 20 45 10 52 2"/>
+    </symbol>
+    <symbol id="ic-grapes" viewBox="0 0 60 200" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M30 0 C30 20 30 30 30 40"/>
+      <path d="M30 15 C45 10 52 20 48 30 C44 22 36 20 30 24Z"/>
+      <circle cx="24" cy="55" r="9"/><circle cx="36" cy="55" r="9"/>
+      <circle cx="18" cy="72" r="9"/><circle cx="30" cy="72" r="9"/><circle cx="42" cy="72" r="9"/>
+      <circle cx="24" cy="89" r="9"/><circle cx="36" cy="89" r="9"/>
+      <circle cx="30" cy="105" r="9"/>
+    </symbol>
+  </defs>
+</svg>
+
+<script>
+/* ============================================================
+   ✏️  EDITA AQUÍ LOS PRECIOS Y PRODUCTOS
+   - Cada categoría tiene un título, un icono y una lista de items.
+   - Para cambiar un precio: solo tocar el número después de "p:".
+   - Para añadir un producto: copiar una línea "{ n: '...', p: 0.00 },"
+     y pegarla dentro de la lista "items" de la categoría que toque.
+   - Para quitar un producto: borrar su línea entera.
+   - "d" (solo en cocktails) es la descripción de ingredientes.
+   - "tier" (solo en gin&tonic) indica el grupo de precio.
+   ============================================================ */
+</script>
+<script>
+const MENU = {
+  cafes: {
+    title: { ca: "Cafès", es: "Cafés", en: "Coffee", fr: "Cafés" },
+    icon: "coffee",
+    items: [
+      { n: "Espresso", p: 2.00 },
+      { n: "Americano", p: 2.00 },
+      { n: "Cortado", p: 2.00 },
+      { n: "Café con leche", p: 2.50 },
+      { n: "Capuccino", p: 3.50 },
+      { n: "Carajillo", p: 3.50 },
+      { n: "Carajillo 43", p: 4.00 },
+      { n: "L'Espresso L'Àncora 43", p: 5.00 },
+      { n: "Trifásico", p: 3.50 },
+      { n: "Café irlandés", p: 8.00 },
+    ]
+  },
+  infusions: {
+    title: { ca: "Infusions", es: "Infusiones", en: "Infusions", fr: "Infusions" },
+    icon: "leaf",
+    items: [
+      { n: "Té negro Earl Grey", p: 2.50 },
+      { n: "Té rojo chai", p: 2.50 },
+      { n: "Té verde gunpowder", p: 2.50 },
+      { n: "Té verde con menta", p: 2.50 },
+      { n: "Manzanilla", p: 2.50 },
+      { n: "Menta poleo", p: 2.50 },
+      { n: "Frutos del bosque", p: 2.50 },
+      { n: "Piña colada", p: 2.50 },
+      { n: "Ratafia", p: 2.50 },
+      { n: "Roibos fresh fruit", p: 2.50 },
+    ]
+  },
+  refrescos: {
+    title: { ca: "Refrescos i Kombucha", es: "Refrescos y Kombucha", en: "Soft Drinks &amp; Kombucha", fr: "Sodas et Kombucha" },
+    icon: "bubbles",
+    items: [
+      { n: "Pepsi", p: 3.50 },
+      { n: "Pepsi sin azúcar", p: 3.50 },
+      { n: "Schweppes limón", p: 3.50 },
+      { n: "Schweppes naranja", p: 3.50 },
+      { n: "Schweppes tónica", p: 3.50 },
+      { n: "Schweppes ginger ale", p: 3.50 },
+      { n: "Schweppes ginger beer", p: 4.00 },
+      { n: "Zumo naranja / piña / melocotón / tomate", p: 3.00 },
+      { n: "Bitter Kas", p: 3.50 },
+      { n: "Trinaranjus naranja", p: 3.50 },
+      { n: "Lipton ice limón", p: 4.50 },
+      { n: "Aquarade limón", p: 4.50 },
+      { n: "Red Bull", p: 5.00 },
+      { n: "Agua mineral 50cl", p: 3.00 },
+      { n: "Agua osmosis 70cl", p: 2.90 },
+      { n: "Agua osmosis 33cl", p: 2.50 },
+      { n: "Agua gas osmosis 70cl", p: 2.90 },
+      { n: "Agua gas osmosis 33cl", p: 2.50 },
+    ]
+  },
+  cerveses: {
+    title: { ca: "Cerveses", es: "Cervezas", en: "Beer", fr: "Bières" },
+    icon: "beer",
+    items: [
+      { n: "Amstel barril 33cl", p: 4.00 },
+      { n: "Amstel barril 50cl", p: 5.00 },
+      { n: "Heineken botella 33cl", p: 4.50 },
+      { n: "Heineken 0.0 33cl", p: 4.50 },
+      { n: "Amstel Radler 33cl", p: 4.00 },
+      { n: "Amstel Radler 50cl", p: 5.00 },
+      { n: "18/70 La Rubia 33cl", p: 4.00 },
+      { n: "18/70 La Rubia 50cl", p: 5.00 },
+      { n: "El Águila Dorada", p: 4.50 },
+      { n: "Cruzcampo Gluten free", p: 4.50 },
+      { n: "Sol Blanquita (Méjico)", p: 5.00 },
+      { n: "Desperados (Francia)", p: 5.00 },
+    ]
+  },
+  cocktails: {
+    title: { ca: "Cocktails de la casa", es: "Cócteles de la casa", en: "House Cocktails", fr: "Cocktails maison" },
+    icon: "cocktail",
+    items: [
+      { n: "Whisky Sour", p: 11.00, d: { ca: "Whisky Yellow Rose, suc de llimona, sucre, clara d'ou", es: "Whisky Yellow Rose, zumo de limón, azúcar, clara de huevo", en: "Yellow Rose whisky, lemon juice, sugar, egg white", fr: "Whisky Yellow Rose, jus de citron, sucre, blanc d'œuf" } },
+      { n: "Gin Fizz", p: 11.00, d: { ca: "Ginebra Martin Miller's, suc de llimona, soda, cullerada de sucre, clara d'ou", es: "Ginebra Martin Miller's, zumo de limón, soda, cucharada de azúcar, clara de huevo", en: "Martin Miller's gin, lemon juice, soda, a spoon of sugar, egg white", fr: "Gin Martin Miller's, jus de citron, soda, sucre, blanc d'œuf" } },
+      { n: "Daiquiri", p: 11.00, d: { ca: "Ron Abuelo añejo, suc de llima, sucre", es: "Ron Abuelo añejo, zumo de lima, azúcar", en: "Aged Ron Abuelo rum, lime juice, sugar", fr: "Rhum Ron Abuelo vieilli, jus de citron vert, sucre" } },
+      { n: "Pisco Sour", p: 11.00, d: { ca: "Pisco, suc de llimona, xarop de sucre, clara d'ou, Angostura", es: "Pisco, zumo de limón, jarabe de azúcar, clara de huevo, Angostura", en: "Pisco, lemon juice, sugar syrup, egg white, Angostura bitters", fr: "Pisco, jus de citron, sirop de sucre, blanc d'œuf, Angostura" } },
+      { n: "Margarita", p: 11.00, d: { ca: "Tequila Buen Amigo, Licor 43, suc de llima, sal", es: "Tequila Buen Amigo, Licor 43, zumo de lima, sal", en: "Buen Amigo tequila, Licor 43, lime juice, salt", fr: "Tequila Buen Amigo, Licor 43, jus de citron vert, sel" } },
+      { n: "Mezcalita", p: 11.00, d: { ca: "Mezcal, suc de taronja, suc de llimona, xarop d'agave, angostura", es: "Mezcal, zumo de naranja, zumo de limón, jarabe de agave, angostura", en: "Mezcal, orange juice, lemon juice, agave syrup, bitters", fr: "Mezcal, jus d'orange, jus de citron, sirop d'agave, angostura" } },
+      { n: "Ancorita Mojito", p: 11.00, d: { ca: "Tequila Buen Amigo, menta, llima, cava i angostura", es: "Tequila Buen Amigo, menta, lima, cava y angostura", en: "Buen Amigo tequila, mint, lime, cava and bitters", fr: "Tequila Buen Amigo, menthe, citron vert, cava et angostura" } },
+      { n: "Mojito Clàssic / Maduixa", p: 10.50, d: { ca: "Ron Abuelo, menta, llima (maduixa, clàssic o sense alcohol)", es: "Ron Abuelo, menta, lima (fresa, clásico o sin alcohol)", en: "Ron Abuelo rum, mint, lime (strawberry, classic or non-alcoholic)", fr: "Rhum Ron Abuelo, menthe, citron vert (fraise, classique ou sans alcool)" } },
+      { n: "Remojito", p: 10.50, d: { ca: "Versió cubana del rebujito; menta, mançanilla, toc de llima i sifó.", es: "Versión del rebujito al estilo cubano, con menta, manzanilla, toque de lima y sifón.", en: "Cuban-style take on rebujito; mint, manzanilla sherry, a touch of lime and soda.", fr: "Version cubaine du rebujito ; menthe, manzanilla, pointe de citron vert et soda." } },
+      { n: "El Mojito Rebel", p: 10.50, d: { ca: "Ron Abuelo añejo, Thunder Bitch, llima i menta", es: "Ron Abuelo añejo, Thunder Bitch, lima y menta", en: "Aged Ron Abuelo rum, Thunder Bitch, lime and mint", fr: "Rhum Ron Abuelo vieilli, Thunder Bitch, citron vert et menthe" } },
+      { n: "L'Espresso de L'Àncora", p: 10.00, d: { ca: "Ron Matusalem 15, espresso, Licor 43", es: "Ron Matusalem 15, espresso, Licor 43", en: "Matusalem 15 rum, espresso, Licor 43", fr: "Rhum Matusalem 15, espresso, Licor 43" } },
+      { n: "Piña Colada", p: 11.00, d: { ca: "Ron Abuelo añejo, ron de coco, puré Monin de coco, licor 43, llima, suc de pinya", es: "Ron Abuelo añejo, ron de coco, puré Monin de coco, licor 43, lima, zumo de piña", en: "Aged Ron Abuelo rum, coconut rum, Monin coconut purée, Licor 43, lime, pineapple juice", fr: "Rhum Ron Abuelo vieilli, rhum coco, purée Monin coco, Licor 43, citron vert, jus d'ananas" } },
+      { n: "Moscow Mule", p: 12.00, d: { ca: "Vodka, suc de llima, cervesa de gingebre, menta, gel picat", es: "Vodka, zumo de lima, cerveza de jengibre, menta, hielo picado", en: "Vodka, lime juice, ginger beer, mint, crushed ice", fr: "Vodka, jus de citron vert, ginger beer, menthe, glace pilée" } },
+      { n: "Orange Gin", p: 12.00, d: { ca: "Mermelada de mandarina, curcuma, pebre i gin Martin Miller's", es: "Mermelada de mandarina, cúrcuma, pimienta y gin Martin Miller's", en: "Tangerine marmalade, turmeric, pepper and Martin Miller's gin", fr: "Marmelade de mandarine, curcuma, poivre et gin Martin Miller's" } },
+    ]
+  },
+  sinalcohol: {
+    title: { ca: "Sense alcohol", es: "Sin alcohol", en: "Non-alcoholic", fr: "Sans alcool" },
+    icon: "mocktail",
+    items: [
+      { n: "Mojito fresa / mango", p: 8.50 },
+      { n: "Mojito jengibre", p: 8.50 },
+      { n: "San Francisco", p: 8.50 },
+      { n: "Triple Orange Gin 0% & tonic", p: 8.50 },
+      { n: "Piña colada sin alcohol", p: 8.50 },
+    ]
+  },
+  gintonic: {
+    title: { ca: "Gin &amp; Tonic", es: "Gin &amp; Tonic", en: "Gin &amp; Tonic", fr: "Gin &amp; Tonic" },
+    icon: "gin",
+    tiered: true,
+    tierLabels: {
+      base: { ca: "Bàsica", es: "Básica", en: "Basic", fr: "Basique" },
+      premium: { ca: "Premium", es: "Premium", en: "Premium", fr: "Premium" },
+      superior: { ca: "Superior", es: "Superior", en: "Superior", fr: "Supérieur" },
+      top: { ca: "Top", es: "Top", en: "Top", fr: "Top" },
+    },
+    items: [
+      { n: "Bulldog", p: 10.50, tier: "premium" },
+      { n: "London Nº1", p: 10.50, tier: "premium" },
+      { n: "Nordes", p: 10.50, tier: "premium" },
+      { n: "Ginraw", p: 10.50, tier: "premium" },
+      { n: "Gold 999,9", p: 10.50, tier: "premium" },
+      { n: "Bombay Sapphire", p: 9.50, tier: "base" },
+      { n: "Martin Miller's", p: 9.50, tier: "base" },
+      { n: "Oxley", p: 10.50, tier: "premium" },
+      { n: "Hendrick's", p: 10.50, tier: "premium" },
+      { n: "Citadelle", p: 10.50, tier: "premium" },
+      { n: "Engine", p: 10.50, tier: "premium" },
+      { n: "Xoriguer", p: 9.50, tier: "base" },
+      { n: "Voortekker", p: 10.50, tier: "premium" },
+      { n: "Macronesian Canarias", p: 10.50, tier: "premium" },
+      { n: "Le PointG", p: 10.50, tier: "premium" },
+      { n: "Jinzu", p: 10.50, tier: "premium" },
+      { n: "Beefeater 24", p: 10.50, tier: "premium" },
+      { n: "Bombay Presse", p: 9.50, tier: "base" },
+      { n: "Malfy", p: 9.50, tier: "base" },
+      { n: "G'Vine", p: 11.50, tier: "superior" },
+      { n: "The Botanical's", p: 10.50, tier: "premium" },
+      { n: "9 Moons", p: 16.00, tier: "top" },
+      { n: "Fifty Pounds", p: 10.50, tier: "premium" },
+    ]
+  },
+  rons: {
+    title: { ca: "Rons", es: "Rones", en: "Rum", fr: "Rhums" },
+    icon: "barrel",
+    groups: [
+      {
+        label: { ca: "Blancs i lleugers", es: "Blancos y ligeros", en: "White &amp; Light", fr: "Blancs et légers" },
+        items: [
+          { n: "Legendario Blanco", p: 9.00 },
+          { n: "Plantation 3 Stars", p: 10.00 },
+          { n: "Habana 3", p: 9.00 },
+          { n: "Bacardí", p: 9.00 },
+        ]
+      },
+      {
+        label: { ca: "Añejos i reserva", es: "Añejos y reserva", en: "Aged &amp; Reserve", fr: "Vieillis et réserve" },
+        items: [
+          { n: "Ron Abuelo 7", p: 9.00 },
+          { n: "Botrán 12", p: 10.50 },
+          { n: "Diplomático Mantuano", p: 10.00 },
+          { n: "Habana 7", p: 9.00 },
+          { n: "Flor de Caña 12", p: 10.00 },
+          { n: "Matusalén 15", p: 12.00 },
+          { n: "Appleton Estate", p: 13.50 },
+        ]
+      },
+      {
+        label: { ca: "Alta gamma i solera", es: "Alta gama y solera", en: "Premium &amp; Solera", fr: "Haut de gamme et solera" },
+        items: [
+          { n: "Zacapa 23", p: 14.00 },
+          { n: "Santa Teresa 1796", p: 16.00 },
+          { n: "Havana Club Selección de Maestros", p: 14.00 },
+          { n: "Flor de Caña 25", p: 25.00 },
+          { n: "Barceló Imperial", p: 13.50 },
+          { n: "Don Papa", p: 15.00 },
+          { n: "Bermúdez Aniversario 12", p: 13.50 },
+          { n: "Pampero Aniversario", p: 11.50 },
+        ]
+      },
+    ]
+  },
+  whisky: {
+    title: { ca: "Whisky", es: "Whisky", en: "Whisky", fr: "Whisky" },
+    icon: "whisky",
+    note: "note_whisky_refresco",
+    groups: [
+      {
+        label: { ca: "Single Malt", es: "Single Malt", en: "Single Malt", fr: "Single Malt" },
+        items: [
+          { n: "Glenmorangie", p: 10.50 },
+          { n: "Springbank 10", p: 12.00 },
+          { n: "Auchentoshan 12", p: 9.00 },
+          { n: "The Balvenie 12", p: 16.50 },
+          { n: "Glenfiddich 12", p: 10.50 },
+          { n: "Glenfiddich 18", p: 20.50 },
+          { n: "Ardbeg Ten", p: 14.50 },
+          { n: "Bowmore 12", p: 20.50 },
+          { n: "Talisker Storm", p: 16.50 },
+          { n: "Oban 14", p: 13.00 },
+          { n: "The Glenlivet Founder's Reserve", p: 9.00 },
+          { n: "The Glenlivet 15", p: 14.50 },
+        ]
+      },
+      {
+        label: { ca: "Blended escocès", es: "Blended escocés", en: "Scotch Blended", fr: "Blended écossais" },
+        items: [
+          { n: "Ballantine's", p: 7.00 },
+          { n: "Ballantine's Black", p: 7.00 },
+          { n: "Ballantine's 10 American", p: 8.00 },
+          { n: "Dewar's 12", p: 7.00 },
+          { n: "Dewar's Caribbean Smooth", p: 7.00 },
+          { n: "Chivas 15", p: 12.00 },
+          { n: "Chivas Regal Mizunara", p: 11.00 },
+          { n: "Chivas Regal XV", p: 10.00 },
+          { n: "Cutty Sark 18", p: 11.00 },
+          { n: "Nomad", p: 10.00 },
+        ]
+      },
+      {
+        label: { ca: "Irlandès", es: "Irlandés", en: "Irish", fr: "Irlandais" },
+        items: [
+          { n: "Tullamore Dew", p: 8.50 },
+          { n: "Bushmills 10", p: 10.00 },
+          { n: "The Galtee Mountain Boy", p: 8.00 },
+        ]
+      },
+      {
+        label: { ca: "Amèrica (Bourbon)", es: "América (Bourbon)", en: "America (Bourbon)", fr: "Amérique (Bourbon)" },
+        items: [
+          { n: "Blanton's Gold Edición", p: 35.00 },
+          { n: "Yellow Rose", p: 8.00 },
+          { n: "Canadian Club", p: 9.00 },
+        ]
+      },
+    ]
+  },
+  vodka: {
+    title: { ca: "Vodka", es: "Vodka", en: "Vodka", fr: "Vodka" },
+    icon: "vodka",
+    items: [
+      { n: "Eristoff", p: 8.00 },
+      { n: "Absolut", p: 8.50 },
+      { n: "Absolut Elyx", p: 10.50 },
+      { n: "Exquisite", p: 11.00 },
+      { n: "Belvedere", p: 11.50 },
+      { n: "Beluga Transatlantic", p: 15.50 },
+      { n: "Ciroc", p: 10.50 },
+      { n: "U'Luvka", p: 12.00 },
+      { n: "Siderit Milk", p: 10.00 },
+      { n: "Grey Goose", p: 11.00 },
+    ]
+  },
+  brandy: {
+    title: { ca: "Brandy i Conyac", es: "Brandy y Coñac", en: "Brandy &amp; Cognac", fr: "Brandy et Cognac" },
+    icon: "brandy",
+    items: [
+      { n: "Torres Alta Luz", p: 10.00 },
+      { n: "Gran Duque d'Alba", p: 10.00 },
+      { n: "Courvoisier VSOP", p: 10.00 },
+      { n: "Courvoisier Napoleón", p: 10.00 },
+      { n: "1866", p: 10.00 },
+      { n: "Pere Magloire VSOP", p: 10.00 },
+      { n: "Pere Magloire Calvados", p: 10.00 },
+      { n: "Hennessy", p: 10.50 },
+      { n: "Magno", p: 4.50 },
+      { n: "Veterano", p: 4.50 },
+    ]
+  },
+  licors: {
+    title: { ca: "Licors i Digestius", es: "Licores y Digestivos", en: "Liqueurs &amp; Digestifs", fr: "Liqueurs et Digestifs" },
+    icon: "liqueur",
+    items: [
+      { n: "Baileys", p: 6.00 },
+      { n: "Licor 43", p: 6.00 },
+      { n: "Licor 43 Chocolate", p: 6.00 },
+      { n: "Tía María", p: 5.50 },
+      { n: "St-Germain", p: 7.00 },
+      { n: "Ponche Caballero", p: 5.50 },
+      { n: "Fernet Branca", p: 5.50 },
+      { n: "Amaretto", p: 6.00 },
+      { n: "Nojae", p: 7.00 },
+      { n: "Orujo blanco", p: 5.50 },
+      { n: "Orujo de hierbas", p: 5.50 },
+      { n: "Orujo crema", p: 5.50 },
+      { n: "Pacharán", p: 5.50 },
+      { n: "Licor café", p: 6.00 },
+      { n: "Limoncello", p: 6.00 },
+      { n: "Ratafia", p: 6.00 },
+      { n: "Jägermeister", p: 6.50 },
+      { n: "Licor manzana verde", p: 5.00 },
+      { n: "Licor melocotón", p: 5.00 },
+      { n: "Tequila Buen Amigo shot", p: 4.00 },
+      { n: "Tequila Patrón Blanco shot", p: 8.00 },
+      { n: "Frangelico", p: 5.50 },
+    ]
+  },
+  aperitius: {
+    title: { ca: "Aperitius", es: "Aperitivos", en: "Aperitifs", fr: "Apéritifs" },
+    icon: "spritz",
+    items: [
+      { n: "Martini Bianco / Rosso", p: 4.50 },
+      { n: "Martini Riserva Speciale", p: 5.00 },
+      { n: "Cinzano Bianco / Rosso", p: 4.50 },
+      { n: "Petroni Vermello / Blanco", p: 4.50 },
+      { n: "Padró Blanco Reserva", p: 5.00 },
+      { n: "Padró Rojo Clásico", p: 4.50 },
+      { n: "Yzaguirre Blanco / Rojo", p: 4.50 },
+      { n: "Campari", p: 4.50 },
+      { n: "Martini Fiero & Tonic", p: 8.50 },
+      { n: "Aperol Spritz", p: 9.00 },
+      { n: "Campari Spritz", p: 9.00 },
+      { n: "Limoncello Spritz", p: 9.00 },
+      { n: "St. Germain Spritz", p: 9.00 },
+      { n: "Ricard", p: 5.50 },
+      { n: "Sangría Lolea tinto", p: 6.00 },
+      { n: "Sangría de cava Lolea", p: 6.50 },
+      { n: "Kir Royal", p: 6.50 },
+      { n: "Kir", p: 6.00 },
+    ]
+  },
+};
+
+const UI = {
+  tagline: { ca: "Carta de begudes · 40 anys vora el mar", es: "Carta de bebidas · 40 años junto al mar", en: "Drinks menu · 40 years by the sea", fr: "Carte des boissons · 40 ans au bord de la mer" },
+  scroll: { ca: "Fes scroll", es: "Desliza", en: "Scroll down", fr: "Faites défiler" },
+  tier_legend: { ca: "Preu segons la gamma de la ginebra", es: "Precio según la gama de la ginebra", en: "Price depends on the gin's range", fr: "Prix selon la gamme du gin" },
+  footer: { ca: "40 anys vora el mar · 1986–2026", es: "40 años junto al mar · 1986–2026", en: "40 years by the sea · 1986–2026", fr: "40 ans au bord de la mer · 1986–2026" },
+  lang_label: { ca: "Idioma", es: "Idioma", en: "Language", fr: "Langue" },
+  note_night_surcharge: { ca: "A partir de les 23h o amb actuacions en directe: +1€", es: "A partir de las 23h o con actuaciones en directo: +1€", en: "After 11pm or during live music: +€1", fr: "Après 23h ou lors de concerts live : +1€" },
+  note_whisky_refresco: { ca: "Combinat amb refresc: +2€", es: "Combinado con refresco: +2€", en: "Mixed with a soft drink: +€2", fr: "Mélangé avec un soda : +2€" },
+  night_banner: { ca: "Recàrrec nocturn actiu ara mateix (+1€ en cerveses, licors i aperitius)", es: "Recargo nocturno activo ahora mismo (+1€ en cervezas, licores y aperitivos)", en: "Late-night surcharge active now (+€1 on beer, spirits &amp; aperitifs)", fr: "Supplément de nuit actif en ce moment (+1€ sur bières, liqueurs et apéritifs)" },
+};
+</script>
+<script>
+/* ============================================================
+   🌙  RECÀRREC NOCTURN — configuració (edita lliurement)
+   ------------------------------------------------------------
+   - NIGHT_HOUR: hora (0-23) a partir de la qual s'activa el recàrrec.
+   - NIGHT_HOUR_END: hora (0-23) fins la qual dura (per si passa mitjanit).
+   - NIGHT_AMOUNT: import del recàrrec en euros.
+   - NIGHT_CATEGORIES: claus de categoria a les quals s'aplica
+     (mira l'objecte MENU de dalt: "cerveses", "licors", "aperitius"...).
+   - LIVE_MUSIC_DATES: dates concretes amb música en directe →
+     recàrrec actiu TOT EL DIA. Format "AAAA-MM-DD", una per línia.
+   - LIVE_MUSIC_WEEKDAYS: dies de la setmana amb música habitual
+     (0=diumenge, 1=dilluns ... 6=dissabte). Deixa [] si no n'hi ha.
+   ============================================================ */
+const NIGHT_HOUR = 23;
+const NIGHT_HOUR_END = 6;
+const NIGHT_AMOUNT = 1.00;
+const NIGHT_CATEGORIES = ['cerveses', 'licors', 'aperitius'];
+
+const LIVE_MUSIC_DATES = [
+  // "2026-08-15",
+  // "2026-09-01",
+];
+const LIVE_MUSIC_WEEKDAYS = [
+  // 5, 6   // p.ex. divendres i dissabte
+];
+
+function pad2(n){ return String(n).padStart(2, '0'); }
+function localDateStr(d){ return `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`; }
+
+function isNightSurchargeActive(){
+  const now = new Date();
+  const hour = now.getHours();
+  const inNightHours = NIGHT_HOUR_END > NIGHT_HOUR
+    ? (hour >= NIGHT_HOUR && hour < NIGHT_HOUR_END)
+    : (hour >= NIGHT_HOUR || hour < NIGHT_HOUR_END);
+  const isLiveMusicDate = LIVE_MUSIC_DATES.includes(localDateStr(now));
+  const isLiveMusicWeekday = LIVE_MUSIC_WEEKDAYS.includes(now.getDay());
+  return inNightHours || isLiveMusicDate || isLiveMusicWeekday;
+}
+</script>
+<script>
+/* ============================================================
+   A partir de aquí: motor de renderizado. No hace falta tocarlo
+   para actualizar precios.
+   ============================================================ */
+const euro = (n) => n.toFixed(2).replace('.', ',') + '€';
+
+const SUPPORTED_LANGS = ['ca', 'es', 'en', 'fr'];
+const LANG_NAMES = { ca: 'CA', es: 'ES', en: 'EN', fr: 'FR' };
+
+function detectLang(){
+  let saved = null;
+  try { saved = localStorage.getItem('lancora_lang'); } catch(e) {}
+  if(saved && SUPPORTED_LANGS.includes(saved)) return saved;
+  const nav = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'ca']);
+  for(const l of nav){
+    const code = l.slice(0,2).toLowerCase();
+    if(SUPPORTED_LANGS.includes(code)) return code;
+  }
+  return 'ca';
+}
+
+let LANG = detectLang();
+
+function t(field){ return field[LANG] || field.ca; }
+
+const SPRIGS = { cafes: 'coffeebranch', gintonic: 'leafsprig', cerveses: 'barley', rons: 'sugarcane', aperitius: 'grapes' };
+
+function renderItem(it, extra=0){
+  return `<div class="item"><span class="name">${it.n}</span><span class="price">${euro(it.p + extra)}</span></div>`;
+}
+
+function renderCocktail(it){
+  return `<div class="cocktail-item">
+    <div class="row"><span class="name">${it.n}</span><span class="price">${euro(it.p)}</span></div>
+    ${it.d ? `<div class="desc">${t(it.d)}</div>` : ''}
+  </div>`;
+}
+
+function renderTiered(cat){
+  let out = '';
+  const order = ['base','premium','superior','top'];
+  const groups = {};
+  cat.items.forEach(it => { (groups[it.tier] = groups[it.tier] || []).push(it); });
+  order.forEach(tier => {
+    if(!groups[tier]) return;
+    const label = t(cat.tierLabels[tier]);
+    out += `<div class="tier-block"><span class="tier-name">${label} · ${euro(groups[tier][0].p)}</span></div>`;
+    groups[tier].forEach(it => {
+      out += `<div class="item"><span class="name">${it.n}</span><span></span></div>`;
+    });
+  });
+  return out;
+}
+
+function renderGroups(cat){
+  return cat.groups.map(g => `
+    <div class="group-block">
+      <div class="group-name">${t(g.label)}</div>
+      <div class="items-grid">${g.items.map(renderItem).join('')}</div>
+    </div>
+  `).join('');
+}
+
+function buildNav(){
+  const nav = document.getElementById('catnav');
+  nav.innerHTML = Object.entries(MENU).map(([key, cat]) =>
+    `<a href="#${key}" data-key="${key}">${t(cat.title)}</a>`
+  ).join('');
+}
+
+function buildSideWidget(){
+  const box = document.getElementById('sidewidget');
+  const langBtns = SUPPORTED_LANGS.map(l =>
+    `<button class="lang-btn ${l===LANG?'active':''}" data-lang="${l}">${LANG_NAMES[l]}</button>`
+  ).join('');
+  box.innerHTML = `
+    ${langBtns}
+    <div class="sep"></div>
+    <a class="ig-link" href="https://instagram.com/ancoraroses" target="_blank" rel="noopener" aria-label="Instagram @ancoraroses">
+      <svg viewBox="0 0 24 24"><use href="#ic-instagram"/></svg>
+    </a>
+  `;
+  box.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      LANG = btn.dataset.lang;
+      try { localStorage.setItem('lancora_lang', LANG); } catch(e) {}
+      renderAll();
+      window.scrollTo({top:0, behavior:'instant'});
+    });
+  });
+}
+
+function buildSections(){
+  const main = document.getElementById('main');
+  const nightActive = isNightSurchargeActive();
+  main.innerHTML = Object.entries(MENU).map(([key, cat]) => {
+    const extra = (NIGHT_CATEGORIES.includes(key) && nightActive) ? NIGHT_AMOUNT : 0;
+    let body;
+    if(cat.tiered){
+      body = renderTiered(cat);
+    } else if(cat.groups){
+      body = renderGroups(cat);
+    } else if(cat.items.some(it => 'd' in it)){
+      body = cat.items.map(renderCocktail).join('');
+    } else {
+      body = cat.items.map(it => renderItem(it, extra)).join('');
+    }
+    const wrapBody = cat.groups ? body : `<div class="items-grid">${body}</div>`;
+    const legend = cat.tiered
+      ? `<div class="tier-legend">${t(UI.tier_legend)}</div>`
+      : (cat.note ? `<div class="tier-legend">${t(UI[cat.note])}</div>` : '');
+    const sprigIcon = SPRIGS[key];
+    const sprig = sprigIcon ? `<svg class="leaf-sprig" viewBox="0 0 60 200"><use href="#ic-${sprigIcon}"/></svg>` : '';
+    return `
+    <section class="category" id="${key}">
+      <div class="wrap">
+        <svg class="section-watermark" viewBox="0 0 24 24"><use href="#ic-${cat.icon}"/></svg>
+        ${sprig}
+        <div class="section-header">
+          <svg class="icon" viewBox="0 0 24 24"><use href="#ic-${cat.icon}"/></svg>
+          <h2>${t(cat.title)}</h2>
+        </div>
+        ${legend}
+        ${wrapBody}
+      </div>
+    </section>`;
+  }).join('');
+}
+
+function updateStaticText(){
+  document.getElementById('tagline').textContent = t(UI.tagline);
+  document.getElementById('scrolltext').textContent = t(UI.scroll);
+  document.getElementById('footertext').lastChild.textContent = t(UI.footer);
+  document.documentElement.lang = LANG;
+}
+
+function scrollSpy(){
+  const links = [...document.querySelectorAll('#catnav a')];
+  const sections = [...document.querySelectorAll('section.category')];
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        links.forEach(l => l.classList.toggle('active', l.dataset.key === e.target.id));
+        const active = document.querySelector('#catnav a.active');
+        if(active) active.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+      }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+  sections.forEach(s => io.observe(s));
+}
+
+function updateNightBanner(){
+  const el = document.getElementById('nightbanner');
+  if(isNightSurchargeActive()){
+    el.style.display = 'block';
+    el.innerHTML = `<span class="moon">🌙</span>${t(UI.night_banner)}`;
+  } else {
+    el.style.display = 'none';
+    el.innerHTML = '';
+  }
+}
+
+function renderAll(){
+  buildNav();
+  buildSideWidget();
+  buildSections();
+  updateStaticText();
+  updateNightBanner();
+  scrollSpy();
+}
+
+renderAll();
+</script>
+</body>
+</html>
