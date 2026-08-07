@@ -444,7 +444,7 @@ const MENU = {
     ]
   },
   refrescos: {
-    title: { ca: "Refrescos i Kombucha", es: "Refrescos y Kombucha", en: "Soft Drinks &amp; Kombucha", fr: "Sodas et Kombucha" },
+    title: { ca: "Refrescos", es: "Refrescos", en: "Soft Drinks", fr: "Sodas" },
     icon: "bubbles",
     items: [
       { n: "Pepsi", p: 3.50 },
@@ -505,6 +505,18 @@ const MENU = {
       { n: "Orange Gin", p: 12.00, d: { ca: "Mermelada de mandarina, curcuma, pebre i gin Martin Miller's", es: "Mermelada de mandarina, cúrcuma, pimienta y gin Martin Miller's", en: "Tangerine marmalade, turmeric, pepper and Martin Miller's gin", fr: "Marmelade de mandarine, curcuma, poivre et gin Martin Miller's" } },
     ]
   },
+  spritz: {
+    title: { ca: "Spritz", es: "Spritz", en: "Spritz", fr: "Spritz" },
+    icon: "spritz",
+    items: [
+      { n: "Aperol Spritz", p: 9.00 },
+      { n: "Campari Spritz", p: 9.00 },
+      { n: "Limoncello Spritz", p: 9.00 },
+      { n: "St. Germain Spritz", p: 9.00 },
+      { n: "Crodino Spritz (sin alcohol)", p: 7.00 },
+      { n: "Spritz Sarti (mango y fruta de la pasión)", p: 9.00 },
+    ]
+  },
   sinalcohol: {
     title: { ca: "Sense alcohol", es: "Sin alcohol", en: "Non-alcoholic", fr: "Sans alcool" },
     icon: "mocktail",
@@ -519,37 +531,50 @@ const MENU = {
   gintonic: {
     title: { ca: "Gin &amp; Tonic", es: "Gin &amp; Tonic", en: "Gin &amp; Tonic", fr: "Gin &amp; Tonic" },
     icon: "gin",
-    tiered: true,
-    tierLabels: {
-      base: { ca: "Bàsica", es: "Básica", en: "Basic", fr: "Basique" },
-      premium: { ca: "Premium", es: "Premium", en: "Premium", fr: "Premium" },
-      superior: { ca: "Superior", es: "Superior", en: "Superior", fr: "Supérieur" },
-      top: { ca: "Top", es: "Top", en: "Top", fr: "Top" },
-    },
-    items: [
-      { n: "Bulldog", p: 10.50, tier: "premium" },
-      { n: "London Nº1", p: 10.50, tier: "premium" },
-      { n: "Nordes", p: 10.50, tier: "premium" },
-      { n: "Ginraw", p: 10.50, tier: "premium" },
-      { n: "Gold 999,9", p: 10.50, tier: "premium" },
-      { n: "Bombay Sapphire", p: 9.50, tier: "base" },
-      { n: "Martin Miller's", p: 9.50, tier: "base" },
-      { n: "Oxley", p: 10.50, tier: "premium" },
-      { n: "Hendrick's", p: 10.50, tier: "premium" },
-      { n: "Citadelle", p: 10.50, tier: "premium" },
-      { n: "Engine", p: 10.50, tier: "premium" },
-      { n: "Xoriguer", p: 9.50, tier: "base" },
-      { n: "Voortekker", p: 10.50, tier: "premium" },
-      { n: "Macronesian Canarias", p: 10.50, tier: "premium" },
-      { n: "Le PointG", p: 10.50, tier: "premium" },
-      { n: "Jinzu", p: 10.50, tier: "premium" },
-      { n: "Beefeater 24", p: 10.50, tier: "premium" },
-      { n: "Bombay Presse", p: 9.50, tier: "base" },
-      { n: "Malfy", p: 9.50, tier: "base" },
-      { n: "G'Vine", p: 11.50, tier: "superior" },
-      { n: "The Botanical's", p: 10.50, tier: "premium" },
-      { n: "9 Moons", p: 16.00, tier: "top" },
-      { n: "Fifty Pounds", p: 10.50, tier: "premium" },
+    groups: [
+      {
+        label: { ca: "Bàsica", es: "Básica", en: "Basic", fr: "Basique" },
+        items: [
+          { n: "Bombay Sapphire", p: 9.50 },
+          { n: "Martin Miller's", p: 9.50 },
+          { n: "Xoriguer", p: 9.50 },
+          { n: "Bombay Presse", p: 9.50 },
+          { n: "Malfy", p: 9.50 },
+        ]
+      },
+      {
+        label: { ca: "Premium", es: "Premium", en: "Premium", fr: "Premium" },
+        items: [
+          { n: "Bulldog", p: 10.50 },
+          { n: "London Nº1", p: 10.50 },
+          { n: "Nordes", p: 10.50 },
+          { n: "Ginraw", p: 10.50 },
+          { n: "Gold 999,9", p: 10.50 },
+          { n: "Oxley", p: 10.50 },
+          { n: "Hendrick's", p: 10.50 },
+          { n: "Citadelle", p: 10.50 },
+          { n: "Engine", p: 10.50 },
+          { n: "Voortekker", p: 10.50 },
+          { n: "Macronesian Canarias", p: 10.50 },
+          { n: "Le PointG", p: 10.50 },
+          { n: "Jinzu", p: 10.50 },
+          { n: "Beefeater 24", p: 10.50 },
+          { n: "The Botanical's", p: 10.50 },
+          { n: "Fifty Pounds", p: 10.50 },
+        ]
+      },
+      {
+        label: { ca: "Superior", es: "Superior", en: "Superior", fr: "Supérieur" },
+        items: [
+          { n: "G'Vine", p: 11.50 },
+        ]
+      },
+      {
+        label: { ca: "Top", es: "Top", en: "Top", fr: "Top" },
+        items: [
+          { n: "9 Moons", p: 16.00 },
+        ]
+      },
     ]
   },
   rons: {
@@ -650,6 +675,7 @@ const MENU = {
   vodka: {
     title: { ca: "Vodka", es: "Vodka", en: "Vodka", fr: "Vodka" },
     icon: "vodka",
+    note: "note_vodka_refresco",
     items: [
       { n: "Eristoff", p: 8.00 },
       { n: "Absolut", p: 8.50 },
@@ -682,6 +708,7 @@ const MENU = {
   licors: {
     title: { ca: "Licors i Digestius", es: "Licores y Digestivos", en: "Liqueurs &amp; Digestifs", fr: "Liqueurs et Digestifs" },
     icon: "liqueur",
+    note: "note_licors_shot",
     items: [
       { n: "Baileys", p: 6.00 },
       { n: "Licor 43", p: 6.00 },
@@ -709,7 +736,7 @@ const MENU = {
   },
   aperitius: {
     title: { ca: "Aperitius", es: "Aperitivos", en: "Aperitifs", fr: "Apéritifs" },
-    icon: "spritz",
+    icon: "cocktail",
     items: [
       { n: "Martini Bianco / Rosso", p: 4.50 },
       { n: "Martini Riserva Speciale", p: 5.00 },
@@ -720,10 +747,6 @@ const MENU = {
       { n: "Yzaguirre Blanco / Rojo", p: 4.50 },
       { n: "Campari", p: 4.50 },
       { n: "Martini Fiero & Tonic", p: 8.50 },
-      { n: "Aperol Spritz", p: 9.00 },
-      { n: "Campari Spritz", p: 9.00 },
-      { n: "Limoncello Spritz", p: 9.00 },
-      { n: "St. Germain Spritz", p: 9.00 },
       { n: "Ricard", p: 5.50 },
       { n: "Sangría Lolea tinto", p: 6.00 },
       { n: "Sangría de cava Lolea", p: 6.50 },
@@ -740,8 +763,10 @@ const UI = {
   footer: { ca: "40 anys vora el mar · 1986–2026", es: "40 años junto al mar · 1986–2026", en: "40 years by the sea · 1986–2026", fr: "40 ans au bord de la mer · 1986–2026" },
   lang_label: { ca: "Idioma", es: "Idioma", en: "Language", fr: "Langue" },
   note_night_surcharge: { ca: "A partir de les 23h o amb actuacions en directe: +1€", es: "A partir de las 23h o con actuaciones en directo: +1€", en: "After 11pm or during live music: +€1", fr: "Après 23h ou lors de concerts live : +1€" },
-  note_whisky_refresco: { ca: "Combinat amb refresc: +2€", es: "Combinado con refresco: +2€", en: "Mixed with a soft drink: +€2", fr: "Mélangé avec un soda : +2€" },
-  night_banner: { ca: "Recàrrec nocturn actiu ara mateix (+1€ en cerveses, licors i aperitius)", es: "Recargo nocturno activo ahora mismo (+1€ en cervezas, licores y aperitivos)", en: "Late-night surcharge active now (+€1 on beer, spirits &amp; aperitifs)", fr: "Supplément de nuit actif en ce moment (+1€ sur bières, liqueurs et apéritifs)" },
+  note_whisky_refresco: { ca: "Combinat amb refresc: +2€ · Disponible en xopet: -3€ sobre el preu de la copa", es: "Combinado con refresco: +2€ · Disponible en chupito: -3€ sobre el precio de copa", en: "Mixed with a soft drink: +€2 · Available as a shot: -€3 off the glass price", fr: "Mélangé avec un soda : +2€ · Disponible en shot : -3€ sur le prix du verre" },
+  note_vodka_refresco: { ca: "Combinat amb refresc: +2€ · Disponible en xopet: -3€ sobre el preu de la copa", es: "Combinado con refresco: +2€ · Disponible en chupito: -3€ sobre el precio de copa", en: "Mixed with a soft drink: +€2 · Available as a shot: -€3 off the glass price", fr: "Mélangé avec un soda : +2€ · Disponible en shot : -3€ sur le prix du verre" },
+  note_licors_shot: { ca: "Disponible en xopet: -3€ sobre el preu de la copa", es: "Disponible en chupito: -3€ sobre el precio de copa", en: "Available as a shot: -€3 off the glass price", fr: "Disponible en shot : -3€ sur le prix du verre" },
+  night_banner: { ca: "Recàrrec nocturn actiu ara mateix (+1€ en cerveses, licors, aperitius, refrescos, cafès i infusions)", es: "Recargo nocturno activo ahora mismo (+1€ en cervezas, licores, aperitivos, refrescos, cafés e infusiones)", en: "Late-night surcharge active now (+€1 on beer, spirits, aperitifs, soft drinks, coffee &amp; infusions)", fr: "Supplément de nuit actif en ce moment (+1€ sur bières, liqueurs, apéritifs, sodas, cafés et infusions)" },
 };
 </script>
 <script>
@@ -761,7 +786,7 @@ const UI = {
 const NIGHT_HOUR = 23;
 const NIGHT_HOUR_END = 6;
 const NIGHT_AMOUNT = 1.00;
-const NIGHT_CATEGORIES = ['cerveses', 'licors', 'aperitius'];
+const NIGHT_CATEGORIES = ['cerveses', 'licors', 'aperitius', 'refrescos', 'cafes', 'infusions'];
 
 const LIVE_MUSIC_DATES = [
   // "2026-08-15",
