@@ -197,6 +197,22 @@
   .cocktail-item .price{ font-size:calc(18px * var(--fs-scale)); font-weight:700; color:var(--gold); }
   .cocktail-item .desc{ font-size:calc(14.5px * var(--fs-scale)); font-style:italic; color:var(--slate); margin-top:2px; max-width:640px; }
 
+  .wine-item{
+    grid-column: 1 / -1; display:flex; justify-content:space-between; align-items:flex-start;
+    gap:16px; padding:11px 0; border-bottom:1px dotted var(--hair);
+  }
+  .wine-main{ flex:1; min-width:0; }
+  .wine-name{ font-size:calc(16.5px * var(--fs-scale)); font-weight:600; font-family:'Playfair Display',serif; }
+  .wine-meta{ font-size:calc(12px * var(--fs-scale)); font-style:italic; color:var(--slate); margin-top:2px; }
+  .wine-prices{ display:flex; gap:12px; flex:none; }
+  .wine-price-chip{ display:flex; flex-direction:column; align-items:flex-end; font-family:'Jost',sans-serif; }
+  .wine-price-chip .k{ font-size:calc(9px * var(--fs-scale)); text-transform:uppercase; letter-spacing:0.5px; color:var(--slate); }
+  .wine-price-chip .v{ font-size:calc(14.5px * var(--fs-scale)); font-weight:600; color:var(--gold); }
+  @media (max-width:640px){
+    .wine-item{ flex-direction:column; gap:6px; }
+    .wine-prices{ gap:14px; }
+  }
+
   .tier-block{ grid-column:1/-1; margin-bottom:6px; }
   .tier-block .tier-name{
     font-size:calc(13px * var(--fs-scale)); text-transform:uppercase; letter-spacing:1.5px; color:var(--navy);
@@ -337,6 +353,9 @@
     </symbol>
     <symbol id="ic-spritz" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
       <path d="M4 4h16L12 13v7"/><path d="M8 21h8"/><circle cx="16" cy="5" r="1.3"/><circle cx="18.5" cy="8" r="1"/>
+    </symbol>
+    <symbol id="ic-wineglass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <path d="M7 3h10c0 5-1.5 8-5 8s-5-3-5-8Z"/><path d="M12 11v7"/><path d="M8 21h8"/>
     </symbol>
     <symbol id="ic-star" viewBox="0 0 24 24">
       <path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z"/>
@@ -778,6 +797,121 @@ const MENU = {
       { n: "Kir", p: 6.00 },
     ]
   },
+  "vins-blancs": {
+    title: { ca: "Vins Blancs", es: "Vinos Blancos", en: "White Wines", fr: "Vins Blancs", nl: "Witte Wijnen" },
+    icon: "wineglass",
+    wine: true,
+    items: [
+      { n: "L'Ancora el nostre vi", producer: "Marqués de Vizhoja", do: "—", grapes: "Albariño y loureiro", prices: { copa: 4.10, '75cl': 17.00, pvp: 11.00 } },
+      { n: "Mar Endins", producer: "Celler Oliveda", do: "DO Empordà", grapes: "Garnacha blanca", prices: { '75cl': 21.00 } },
+      { n: "L'Encís", producer: "Vinos del Paseante", do: "DO Empordà", grapes: "Sauvignon blanc, Garnatxa blanca", prices: { '75cl': 21.50 } },
+      { n: "Cap de Creus Nacre", producer: "Joan Sardà", do: "DO Empordà", grapes: "Garnatxa Blanca, Garnatxa Roja", prices: { '75cl': 22.90 } },
+      { n: "Garoina", producer: "Celler Oliveda", do: "DO Empordà", grapes: "Chardonnay", prices: { '75cl': 21.50 } },
+      { n: "Joana", producer: "Celler Oliveda", do: "DO Empordà", grapes: "Chardonnay", prices: { '75cl': 25.00 } },
+      { n: "Quinze Roures", producer: "Espelt Viticultors", do: "DO Empordà", grapes: "Garnacha Blanca, Garnacha Gris", prices: { '75cl': 23.50 } },
+      { n: "Mas Oller Mar Blanc", producer: "Mas Oller", do: "DO Empordà", grapes: "Picapoll y Malvasía", prices: { '75cl': 24.50 } },
+      { n: "Magnetic Blanc", producer: "Torres Icons", do: "DO Catalunya", grapes: "Garnatxa blanca i Sauvignon blanc", prices: { '75cl': 19.00 } },
+      { n: "Les Tortugues", producer: "Celler Massís de l'Albera", do: "DO Empordà", grapes: "Garnatxa Roja", prices: { '75cl': 29.50 } },
+      { n: "Viña Esmeralda", producer: "Torres Icons", do: "DO Penedès", grapes: "Moscatel de Alejandría", prices: { copa: 4.50, '75cl': 21.00 } },
+      { n: "Jean Leon 3055 Chardonnay", producer: "Jean Leon", do: "DO Penedès", grapes: "Chardonnay", prices: { '75cl': 22.50 } },
+      { n: "Fransola", producer: "Familia Torres", do: "DO Penedès", grapes: "Sauvignon Blanc", prices: { '75cl': 40.00 } },
+      { n: "Jean Leon Vinya Gigi Chardonnay", producer: "Jean Leon", do: "DO Penedès", grapes: "Chardonnay fermentat en barrica", prices: { '75cl': 36.00 } },
+      { n: "Virolet", producer: "Oriol Rossell", do: "DO Penedès", grapes: "Xarel·lo", prices: { '75cl': 23.00 } },
+      { n: "Abadal Picapoll", producer: "Bodegas Abadal", do: "DO Pla de Bages", grapes: "Picapoll", prices: { '75cl': 25.50 } },
+      { n: "Clos Farena", producer: "Clos Farena", do: "DOQ Priorat", grapes: "Garnacha Blanca", prices: { '75cl': 23.50 } },
+      { n: "Verdeo", producer: "Torres Icons", do: "DO Rueda", grapes: "Verdejo", prices: { '75cl': 19.00 } },
+      { n: "Ramón Bilbao Verdejo", producer: "Bodegas Ramón Bilbao", do: "DO Rueda", grapes: "Verdejo", prices: { copa: 4.50, '75cl': 22.00 } },
+      { n: "Regina Viarum Godello", producer: "Regina Viarum", do: "DO Ribeira Sacra", grapes: "Godello", prices: { '75cl': 24.50 } },
+      { n: "Godeval", producer: "Bodegas Godeval", do: "DO Valdeorras", grapes: "Godello", prices: { '75cl': 26.00 } },
+      { n: "Castillo de Monjardín Chardonnay Reserva", producer: "Bodegas Castillo de Monjardín", do: "DO Navarra", grapes: "Chardonnay", prices: { '75cl': 23.00 } },
+      { n: "Viñas Del Vero Chardonnay", producer: "Viñas del Vero", do: "DO Somontano", grapes: "Chardonnay", prices: { '75cl': 22.00 } },
+      { n: "Habla de Ti", producer: "Bodegas Habla", do: "VT Extremadura", grapes: "Sauvignon blanc", prices: { '75cl': 23.50 } },
+      { n: "Gómez Cruzado Blanco 2º Año", producer: "Gómez Cruzado", do: "DOCa Rioja", grapes: "Viura, Tempranillo Blanco", prices: { '75cl': 22.50 } },
+      { n: "Camiño Dos Faros", producer: "Bodegas Cunqueiro", do: "DO Ribeiro", grapes: "Treixadura, Torrontés, Palomino", prices: { '75cl': 22.50 } },
+      { n: "Pazo das Bruxas", producer: "Torre Penelas", do: "DO Rías Baixas", grapes: "Albariño", prices: { '75cl': 24.00 } },
+      { n: "Pazo de San Mauro", producer: "Pazo de San Mauro", do: "DO Rías Baixas", grapes: "Albariño", prices: { '75cl': 29.00 } },
+      { n: "Mar De Frades", producer: "Mar de Frades", do: "DO Rías Baixas", grapes: "Albariño", prices: { copa: 6.10, '75cl': 32.00, '150cl': 60.00 } },
+      { n: "Albariño Sanamaro Sobre Lías", producer: "Pazo San Mauro", do: "DO Rías Baixas", grapes: "Albariño, Loureiro", prices: { '75cl': 53.00 } },
+      { n: "Bouchard La Vignee", producer: "Bouchard Père Fils", do: "AOC Côte d'Or", grapes: "Chardonnay", prices: { '75cl': 39.00 } },
+      { n: "Nathalie & Gilles Fèvre Chablis", producer: "Domaine Nathalie & Gilles Fèvre", do: "AOC Chablis - Borgoña", grapes: "Chardonnay", prices: { '75cl': 33.00 } },
+    ]
+  },
+  "vins-rosats": {
+    title: { ca: "Vins Rosats", es: "Vinos Rosados", en: "Rosé Wines", fr: "Vins Rosés", nl: "Rosé Wijnen" },
+    icon: "wineglass",
+    wine: true,
+    items: [
+      { n: "Mosaic Rosé", producer: "Celler Espelt", do: "DO Empordà", grapes: "Garnatxa", prices: { '75cl': 21.00 } },
+      { n: "El Visionari", producer: "Celler Massís de l'Albera", do: "DO Empordà", grapes: "Garnacha negra", prices: { '75cl': 23.50 } },
+      { n: "Amic Rosat", producer: "Clos d'Agon", do: "DO Empordà", grapes: "Lledoner negre, samsó i cabernet franc", prices: { '75cl': 25.50 } },
+      { n: "Viña Esmeralda Rosé", producer: "Torres Icons", do: "DO Catalunya", grapes: "Garnatxa negra", prices: { copa: 4.50, '75cl': 21.50 } },
+      { n: "Alba del Tinar", producer: "Clos d'Agon", do: "DO Catalunya", grapes: "Cabernet Franc y Garnacha Gris", prices: { '75cl': 45.00 } },
+      { n: "Jean Leon 3055 Rosé", producer: "Jean Leon", do: "DO Penedès", grapes: "Pinot Noir i Garnatxa", prices: { '75cl': 22.50 } },
+      { n: "Oriol Rossell Beach Rosé", producer: "Oriol Rossell", do: "DO Penedès", grapes: "Syrah, Garnacha Negra", prices: { '75cl': 23.00 } },
+      { n: "Habla de Ti Rosado", producer: "Bodegas Habla", do: "VT Extremadura", grapes: "Syrah, Cariñena, Garnacha", prices: { '75cl': 24.00 } },
+      { n: "Ramón Bilbao Rosado", producer: "Bodegas Ramón Bilbao", do: "DOCa Rioja", grapes: "Garnacha Negra", prices: { copa: 4.50, '75cl': 21.50 } },
+      { n: "Lalomba", producer: "Bodegas Ramón Bilbao", do: "DOCa Rioja", grapes: "Garnacha y Viura", prices: { '75cl': 37.00 } },
+      { n: "La Vieille Ferme Rosé", producer: "La Vieille Ferme", do: "AOC Côtes du Luberon", grapes: "Cinsault, Garnatxa i Syrah", prices: { '75cl': 22.00 } },
+      { n: "Studio By Miraval", producer: "Château Miraval", do: "IGP Méditerranée", grapes: "Cinsault, Garnacha, Rolle y Tibouren", prices: { '75cl': 28.00 } },
+      { n: "Aix Rosé", producer: "Maison Saint Aix", do: "AOC Côtes de Provence", grapes: "Syrah, Garnacha, Cinsault", prices: { '75cl': 33.50 } },
+    ]
+  },
+  "vins-negres": {
+    title: { ca: "Vins Negres", es: "Vinos Tintos", en: "Red Wines", fr: "Vins Rouges", nl: "Rode Wijnen" },
+    icon: "wineglass",
+    wine: true,
+    items: [
+      { n: "Terra de Vents", producer: "Celler Oliveda", do: "DO Empordà", grapes: "Cariñena y Cabernet Sauvignon", prices: { '75cl': 23.00 } },
+      { n: "Encanteri", producer: "Celler Massís de l'Albera", do: "DO Empordà", grapes: "Garnacha, Syrah, Carinyena Negra", prices: { '75cl': 24.50 } },
+      { n: "Perelada 5 Fincas Reserva", producer: "Perelada", do: "DO Empordà", grapes: "Merlot, Garnacha, Cabernet Sauvignon, Syrah, Tempranillo y Cabernet franc", prices: { '75cl': 26.50 } },
+      { n: "Flor d'Empordà", producer: "Vinyes d'Olivardots", do: "DO Empordà", grapes: "Carinyena, garnatxa i syrah", prices: { '75cl': 48.00 } },
+      { n: "Clos Ancestral", producer: "Familia Torres", do: "DO Penedès", grapes: "Tempranillo, garnacha y monastrell", prices: { '75cl': 25.50 } },
+      { n: "Magnetic", producer: "Torres Icons", do: "DO Catalunya", grapes: "Garnatxa, Syrah", prices: { '75cl': 19.00 } },
+      { n: "Secret del Priorat", producer: "Familia Torres", do: "DO Priorat", grapes: "Garnatxa, Carinyena, Cabernet Sauvignon, Merlot, Syrah", prices: { '75cl': 28.00 } },
+      { n: "Celeste Roble", producer: "Pagos del Cielo", do: "DO Ribera del Duero", grapes: "Tempranillo", prices: { '75cl': 21.50 } },
+      { n: "Cruz de Alba Crianza", producer: "Cruz de Alba", do: "DO Ribera del Duero", grapes: "Tempranillo", prices: { '75cl': 29.50 } },
+      { n: "Trus Reserva", producer: "Bodegas Trus", do: "DO Ribera del Duero", grapes: "Tempranillo", prices: { '75cl': 35.00 } },
+      { n: "Tomás Postigo 3er Año", producer: "Tomás Postigo", do: "DO Ribera del Duero", grapes: "Tinta Fina, Cabernet Sauvignon, Merlot y Malbec", prices: { '75cl': 48.00 } },
+      { n: "Punto Geodésico", producer: "Bodega Trus", do: "DO Ribera del Duero", grapes: "Tempranillo", prices: { '75cl': 48.00 } },
+      { n: "Tomás Postigo Rebollo Quercus Pirenaica", producer: "Tomás Postigo", do: "DO Ribera del Duero", grapes: "Tinto fino, Cabernet Sauvignon, Merlot y Malbec", prices: { '150cl': 144.00 } },
+      { n: "Malpastor Crianza", producer: "La Carbonera", do: "DOCa Rioja Alavesa", grapes: "Tempranillo", prices: { '75cl': 20.50 } },
+      { n: "Ramón Bilbao Crianza", producer: "Bodegas Ramón Bilbao", do: "DOCa Rioja", grapes: "Tempranillo", prices: { copa: 4.50, '75cl': 21.50 } },
+      { n: "Ramón Bilbao Edición Limitada", producer: "Bodegas Ramón Bilbao", do: "DOCa Rioja", grapes: "Tempranillo", prices: { '75cl': 24.50, '150cl': 50.00 } },
+      { n: "Ramón Bilbao Reserva", producer: "Bodegas Ramón Bilbao", do: "DOCa Rioja", grapes: "Tempranillo, Cariñena, Graciano", prices: { '75cl': 26.00 } },
+      { n: "Puerto Rubio", producer: "Palacios Vino de Finca", do: "DOCa Rioja", grapes: "Tempranillo", prices: { '75cl': 56.00 } },
+      { n: "Marqués de Vargas Reserva", producer: "Marqués de Vargas", do: "DOCa Rioja", grapes: "Tempranillo, Garnacha Negra, Cariñena", prices: { '75cl': 34.50 } },
+      { n: "Finca Ladero", producer: "Ramón Bilbao", do: "DOCa Rioja", grapes: "70% Tempranillo, 30% Garnacha", prices: { '75cl': 84.00 } },
+      { n: "Beaune du Château Premier Cru", producer: "Bouchard Père & Fils", do: "Beaune (Borgoña)", grapes: "Pinot noir", prices: { '75cl': 75.00 } },
+    ]
+  },
+  "caves-escumosos": {
+    title: { ca: "Caves i Escumosos", es: "Cavas y Espumosos", en: "Cava &amp; Sparkling", fr: "Cavas et Effervescents", nl: "Cava en Mousserend" },
+    icon: "wineglass",
+    wine: true,
+    items: [
+      { n: "Terrer de la Creu Brut Nature", producer: "Terrer de la Creu", do: "DO Cava", grapes: "Xarel·lo, Macabeu, Parellada", prices: { copa: 4.90, '75cl': 21.50 } },
+      { n: "Vilarnau Brut Reserva", producer: "Vilarnau", do: "DO Cava", grapes: "Macabeo, Parellada y Xarel·lo", prices: { copa: 4.90, '75cl': 23.50 } },
+      { n: "Oriol Rossell Mític Gran Reserva", producer: "Oriol Rossell", do: "DO Cava", grapes: "Xarel·lo, Macabeu", prices: { '75cl': 29.90 } },
+      { n: "Ariadna Gran Reserva Blanc de Noirs", producer: "Celler Oriol Rossell", do: "DO Cava", grapes: "Xarel·lo, Pinot Noir", prices: { '75cl': 37.50 } },
+      { n: "Bottega Gold Prosecco", producer: "Bottega", do: "DOC Prosecco", grapes: "Glera", prices: { '75cl': 38.00 } },
+      { n: "Bottega Rosé Gold Brut", producer: "Bottega", do: "DOC Prosecco", grapes: "Pinot Nero", prices: { '75cl': 38.00 } },
+      { n: "Pommery Apanage Brut", producer: "Vranken Pommery Monopole", do: "Champagne", grapes: "Chardonnay, Pinot Noir, Pinot Meunier", prices: { '75cl': 70.00 } },
+      { n: "Lia Pet-Nat", producer: "Nivarius Palacios · Vi de Finca Ancestral", do: "—", grapes: "100% Garnacha tinta", prices: { '75cl': 22.50 } },
+    ]
+  },
+  "generosos-vermuts": {
+    title: { ca: "Generosos, Vermuts i Sangries", es: "Generosos, Vermuts y Sangrías", en: "Fortified Wines, Vermouth &amp; Sangria", fr: "Vins Doux, Vermouths et Sangrias", nl: "Versterkte Wijnen, Vermout en Sangria" },
+    icon: "wineglass",
+    wine: true,
+    items: [
+      { n: "Floralis", producer: "Bodegas Torres", do: "DO Penedès", grapes: "Moscatel de Alejandría", prices: { copa: 4.50, '75cl': 19.70 } },
+      { n: "Dow's Fine Tawny", producer: "Dow's Port", do: "DO Oporto", grapes: "Touriga Nacional, Touriga Francesa, Tinta Barroca, Tinta Roriz, Tinto Cão", prices: { copa: 4.50, '75cl': 21.90 } },
+      { n: "Vermouth Padró & Co. Reserva Especial", producer: "Vermouth Padró & Co", do: "Bràfim", grapes: "—", prices: { copa: 6.50 } },
+      { n: "Casals Zero", producer: "Juan María Torres Destil·lers", do: "Vermut sense alcohol", grapes: "Selma", prices: { copa: 6.00 } },
+      { n: "Sangría Lolea nº 2 Blanca", producer: "Casa Lolea", do: "—", grapes: "—", prices: { copa: 5.90, '75cl': 18.50 } },
+      { n: "Sangría Lolea nº 1 Tinto", producer: "Casa Lolea", do: "—", grapes: "—", prices: { copa: 5.90, '75cl': 18.50 } },
+    ]
+  },
 };
 
 const UI = {
@@ -981,6 +1115,28 @@ function buildSideWidget(){
   }
 }
 
+const WINE_PRICE_LABELS = {
+  copa: { ca: "Copa", es: "Copa", en: "Glass", fr: "Verre", nl: "Glas" },
+  "75cl": { ca: "Ampolla", es: "Botella", en: "Bottle", fr: "Bouteille", nl: "Fles" },
+  "150cl": { ca: "Màgnum", es: "Mágnum", en: "Magnum", fr: "Magnum", nl: "Magnum" },
+  pvp: { ca: "PVP", es: "PVP", en: "Retail", fr: "Prix boutique", nl: "Winkelprijs" },
+};
+const WINE_PRICE_ORDER = ["copa", "75cl", "150cl", "pvp"];
+
+function renderWine(it){
+  const meta = [it.producer, it.do, it.grapes].filter(x => x && x !== '—').join(' · ');
+  const chips = WINE_PRICE_ORDER.filter(k => it.prices[k] !== undefined).map(k =>
+    `<span class="wine-price-chip"><span class="k">${t(WINE_PRICE_LABELS[k])}</span><span class="v">${euro(it.prices[k])}</span></span>`
+  ).join('');
+  return `<div class="wine-item">
+    <div class="wine-main">
+      <div class="wine-name">${it.n}</div>
+      <div class="wine-meta">${meta}</div>
+    </div>
+    <div class="wine-prices">${chips}</div>
+  </div>`;
+}
+
 function buildSections(){
   const main = document.getElementById('main');
   const nightActive = isNightSurchargeActive();
@@ -989,6 +1145,8 @@ function buildSections(){
     let body;
     if(cat.tiered){
       body = renderTiered(cat);
+    } else if(cat.wine){
+      body = cat.items.map(renderWine).join('');
     } else if(cat.groups){
       body = renderGroups(cat);
     } else if(cat.items.some(it => 'd' in it)){
