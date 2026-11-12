@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Carta de vins de L'Àncora Bar Restaurant, Roses.">
+<title>Carta de vins L'Àncora</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Layout: cabecera corta de marca, barra de filtros fija, lista de vinos por tipo con la botella a la izquierda. */
+  :root{
+    --bg:#f5f0e6; --band:#efe7d6; --card:#fbf8f1; --ink:#1c3454; --ink-strong:#16283f;
+    --gold:#a87a2a; --gold-soft:#c8963e; --muted:#5b6b7a; --hair:rgba(28,52,84,.18);
+    --chip-on-bg:#1c3454; --chip-on-fg:#f5f0e6; --grid:rgba(28,52,84,.045);
+    --display:'Playfair Display',Georgia,'Times New Roman',serif;
+    --body:'Jost',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+    --fs:1;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0f1b2b; --band:#132235; --card:#182a41; --ink:#f1ead9; --ink-strong:#fbf6ea;
+      --gold:#d9ab57; --gold-soft:#c8963e; --muted:#a9b6c3; --hair:rgba(241,234,217,.2);
+      --chip-on-bg:#d9ab57; --chip-on-fg:#0f1b2b; --grid:rgba(241,234,217,.035); color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0f1b2b; --band:#132235; --card:#182a41; --ink:#f1ead9; --ink-strong:#fbf6ea;
+    --gold:#d9ab57; --gold-soft:#c8963e; --muted:#a9b6c3; --hair:rgba(241,234,217,.2);
+    --chip-on-bg:#d9ab57; --chip-on-fg:#0f1b2b; --grid:rgba(241,234,217,.035); color-scheme:dark;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  [hidden]{display:none!important}
+  body{
+    background:var(--bg);color:var(--ink);font-family:var(--body);
+    font-size:calc(17px * var(--fs));line-height:1.5;
+    background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+    background-size:34px 34px;
+  }
+  body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+  .wrap{max-width:920px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  button,input{font:inherit;color:inherit}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+  /* Cabecera */
+  .hero{text-align:center;border-bottom:1px solid var(--hair)}
+  .hero .wrap{padding-block:34px 26px;display:flex;flex-direction:column;align-items:center;gap:6px}
+  .emblem{width:64px;height:64px;border:1.5px solid var(--gold-soft);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink);margin-bottom:6px}
+  .emblem svg{width:30px;height:30px}
+  .eyebrow{font-size:calc(12.5px * var(--fs));letter-spacing:4px;text-transform:uppercase;color:var(--gold);font-weight:600}
+  h1{font-family:var(--display);font-weight:700;font-size:calc(clamp(34px,8vw,56px) * var(--fs));line-height:1.05;color:var(--ink-strong);text-wrap:balance}
+  .tagline{font-size:calc(14px * var(--fs));letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:500}
+
+  /* Barra de filtros */
+  .bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:8;background:var(--bg);border-bottom:1px solid var(--hair)}
+  .bar .wrap{padding-block:10px;display:flex;flex-direction:column;gap:10px}
+  .types{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-inline:-4px;padding:2px 4px}
+  .types::-webkit-scrollbar{display:none}
+  .chip{
+    flex:none;border:1px solid var(--hair);background:transparent;color:var(--muted);border-radius:20px;
+    padding:7px 14px;font-size:calc(14px * var(--fs));cursor:pointer;white-space:nowrap;transition:background .15s,color .15s
+  }
+  .chip[aria-pressed="true"]{background:var(--chip-on-bg);color:var(--chip-on-fg);border-color:var(--chip-on-bg)}
+  .chip .n{opacity:.6;margin-left:5px;font-size:.85em}
+  .tools{display:flex;gap:8px}
+  .search{flex:1;min-width:0;border:1px solid var(--hair);background:var(--card);border-radius:22px;padding:9px 16px;font-size:calc(15px * var(--fs))}
+  .search::placeholder{color:var(--muted)}
+  .fbtn{flex:none;border:1px solid var(--ink);background:transparent;border-radius:22px;padding:9px 16px;font-weight:600;font-size:calc(14px * var(--fs));cursor:pointer}
+  .fbtn[aria-expanded="true"]{background:var(--chip-on-bg);color:var(--chip-on-fg);border-color:var(--chip-on-bg)}
+  .panel{display:flex;flex-direction:column;gap:14px;padding:6px 0 4px;max-height:52vh;overflow-y:auto}
+  .panel h3{font-size:calc(11.5px * var(--fs));letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:7px}
+  .panel .set{display:flex;flex-wrap:wrap;gap:7px}
+  .status{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:calc(13px * var(--fs));color:var(--muted)}
+  .clear{border:none;background:none;color:var(--gold);font-weight:600;cursor:pointer;text-decoration:underline;font-size:inherit}
+
+  /* Lista */
+  main .wrap{padding-block:8px 110px}
+  section{padding-top:34px}
+  section h2{font-family:var(--display);font-size:calc(28px * var(--fs));color:var(--ink-strong);display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
+  section h2 .count{font-family:var(--body);font-size:calc(13px * var(--fs));color:var(--muted);font-weight:500;letter-spacing:.5px}
+  .list{display:grid;grid-template-columns:1fr 1fr;column-gap:36px}
+  @media (max-width:720px){.list{grid-template-columns:1fr}}
+  .wine{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--hair);min-width:0}
+  .wine .pic{flex:none;width:38px;display:flex;align-items:flex-start;justify-content:center}
+  .wine .pic svg{width:30px;height:90px}
+  .wine .pic img{width:38px;height:100px;object-fit:contain}
+  .wine .body{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+  .pick{align-self:flex-start;font-size:calc(10.5px * var(--fs));letter-spacing:1.2px;text-transform:uppercase;font-weight:600;color:var(--chip-on-fg);background:var(--chip-on-bg);border-radius:10px;padding:2px 9px}
+  .wine h3{font-family:var(--display);font-weight:700;font-size:calc(18px * var(--fs));line-height:1.25;color:var(--ink-strong);overflow-wrap:anywhere}
+  .meta{font-size:calc(13px * var(--fs));color:var(--muted)}
+  .meta b{font-weight:600;color:var(--ink)}
+  .grapes{font-size:calc(13.5px * var(--fs));font-style:italic;color:var(--muted)}
+  .tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px}
+  .tag{font-size:calc(11.5px * var(--fs));border:1px solid var(--hair);border-radius:10px;padding:1px 8px;color:var(--ink)}
+  .pair{font-size:calc(13px * var(--fs));color:var(--ink);margin-top:3px}
+  .pair span{font-size:calc(10px * var(--fs));letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin-right:4px}
+  .prices{display:flex;gap:18px;margin-top:6px;font-variant-numeric:tabular-nums}
+  .prices div{display:flex;flex-direction:column}
+  .prices .k{font-size:calc(10px * var(--fs));letter-spacing:.8px;text-transform:uppercase;color:var(--muted)}
+  .prices .v{font-size:calc(16px * var(--fs));font-weight:600;color:var(--gold)}
+  .empty{padding:60px 0;text-align:center;color:var(--muted)}
+  .empty p{margin-bottom:12px}
+
+  footer{background:var(--band);border-top:1px solid var(--hair);text-align:center}
+  footer .wrap{padding-block:30px 96px;font-size:calc(12.5px * var(--fs));letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);line-height:2}
+
+  .widget{
+    position:fixed;right:calc(12px + env(safe-area-inset-right,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:9;
+    background:#1c3454;border:1px solid #c8963e;border-radius:30px;display:flex;align-items:center;gap:2px;padding:5px 7px;
+    box-shadow:0 4px 16px rgba(0,0,0,.28)
+  }
+  .widget button{border:none;background:none;color:#f5f0e6;opacity:.6;font-size:11px;font-weight:600;letter-spacing:.5px;padding:6px 7px;border-radius:16px;cursor:pointer}
+  .widget button[aria-pressed="true"]{opacity:1;background:#c8963e;color:#16283f}
+  .widget .sep{width:1px;height:16px;background:rgba(245,240,230,.25);margin:0 3px}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <div class="emblem"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="9" r="4"/><path d="M24 13v29M15 21h18M7 29c1 8 8 13 17 13s16-5 17-13M7 29l-3 4M7 29l4 3M41 29l3 4M41 29l-4 3"/></svg></div>
+  <div class="eyebrow">Bar · Restaurant · Roses</div>
+  <h1 id="t-title">Carta de vins</h1>
+  <div class="tagline" id="t-tag"></div>
+</div></header>
+
+<div class="bar"><div class="wrap">
+  <div class="types" id="types" role="group"></div>
+  <div class="tools">
+    <input class="search" id="q" type="search" autocomplete="off">
+    <button class="fbtn" id="fbtn" type="button" aria-expanded="false" aria-controls="panel"></button>
+  </div>
+  <div class="panel" id="panel" hidden></div>
+  <div class="status"><span id="count"></span><button class="clear" id="clear" type="button" hidden></button></div>
+</div></div>
+
+<main><div class="wrap" id="main"></div></main>
+
+<footer><div class="wrap" id="foot"></div></footer>
+<div class="widget" id="widget"></div>
+
+<script>
+/* ============================================================
+   ORIGEN DE DATOS
+   Si SHEET_CSV_URL tiene la dirección CSV publicada de la hoja
+   "Carta de vinos" de Google Sheets, la carta lee de ahí cada vez
+   que se abre. Si está vacía o falla, usa la lista de abajo.
+   Columnas: id, nombre, bodega, do, zona, uvas, tipo, copa, botella,
+   magnum, pvp, estilo, maridaje, stock, agotado, recomendado, foto
+   ============================================================ */
+const SHEET_CSV_URL = '';
+const WINES_LOCAL = [{"id":"V001","nombre":"L'Àncora, el nostre vi","bodega":"Marqués de Vizhoja","do":"","zona":"Galícia","uvas":"Albariño, Loureiro","tipo":"blanc","copa":"4,10","botella":"17,00","magnum":"","pvp":"11,00","estilo":"fresc afruitat lleuger","maridaje":"mejillones boquerones","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V002","nombre":"Mar Endins","bodega":"Celler Oliveda","do":"DO Empordà","zona":"Empordà","uvas":"Garnatxa blanca","tipo":"blanc","copa":"","botella":"21,00","magnum":"","pvp":"","estilo":"fresc afruitat","maridaje":"boquerones calamares","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V003","nombre":"L'Encís","bodega":"Vinos del Paseante","do":"DO Empordà","zona":"Empordà","uvas":"Sauvignon blanc, Garnatxa blanca","tipo":"blanc","copa":"","botella":"21,50","magnum":"","pvp":"","estilo":"aromatic citric","maridaje":"enscalamares atunteriyaki","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V004","nombre":"Cap de Creus Nacre","bodega":"Joan Sardà","do":"DO Empordà","zona":"Empordà","uvas":"Garnatxa blanca, Garnatxa roja","tipo":"blanc","copa":"","botella":"22,90","magnum":"","pvp":"","estilo":"mineral sali","maridaje":"tellarinas carpaccio","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V005","nombre":"Garoina","bodega":"Celler Oliveda","do":"DO Empordà","zona":"Empordà","uvas":"Chardonnay","tipo":"blanc","copa":"","botella":"21,50","magnum":"","pvp":"","estilo":"afruitat fresc","maridaje":"calamares mejillones","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V006","nombre":"Joana","bodega":"Celler Oliveda","do":"DO Empordà","zona":"Empordà","uvas":"Chardonnay","tipo":"blanc","copa":"","botella":"25,00","magnum":"","pvp":"","estilo":"untuos afruitat","maridaje":"suquet langosta","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V007","nombre":"Quinze Roures","bodega":"Espelt Viticultors","do":"DO Empordà","zona":"Empordà","uvas":"Garnatxa blanca, Garnatxa roja","tipo":"blanc","copa":"","botella":"23,50","magnum":"","pvp":"","estilo":"barrica untuos","maridaje":"langosta merluza","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V008","nombre":"Mas Oller Mar Blanc","bodega":"Mas Oller","do":"DO Empordà","zona":"Empordà","uvas":"Picapoll, Malvasia","tipo":"blanc","copa":"","botella":"24,50","magnum":"","pvp":"","estilo":"fresc sali floral","maridaje":"carpaccio lenguado","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V009","nombre":"Magnetic Blanc","bodega":"Torres Icons","do":"DO Catalunya","zona":"Catalunya","uvas":"Garnatxa blanca, Sauvignon blanc","tipo":"blanc","copa":"","botella":"19,00","magnum":"","pvp":"","estilo":"fresc afruitat","maridaje":"mejillones boquerones","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V010","nombre":"Les Tortugues","bodega":"Celler Massís de l'Albera","do":"DO Empordà","zona":"Empordà","uvas":"Garnatxa roja","tipo":"blanc","copa":"","botella":"29,50","magnum":"","pvp":"","estilo":"mineral untuos","maridaje":"lubina dorada","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V011","nombre":"Viña Esmeralda","bodega":"Torres Icons","do":"DO Penedès","zona":"Penedès","uvas":"Moscatell","tipo":"blanc","copa":"4,50","botella":"21,00","magnum":"","pvp":"","estilo":"aromatic floral","maridaje":"atunteriyaki gambas","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V012","nombre":"Jean Leon 3055 Chardonnay","bodega":"Jean Leon","do":"DO Penedès","zona":"Penedès","uvas":"Chardonnay","tipo":"blanc","copa":"","botella":"22,50","magnum":"","pvp":"","estilo":"afruitat fresc","maridaje":"boquerones calamares","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V013","nombre":"Fransola","bodega":"Familia Torres","do":"DO Penedès","zona":"Penedès","uvas":"Sauvignon blanc","tipo":"blanc","copa":"","botella":"40,00","magnum":"","pvp":"","estilo":"barrica aromatic elegant","maridaje":"merluza suquet","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V014","nombre":"Jean Leon Vinya Gigi Chardonnay","bodega":"Jean Leon","do":"DO Penedès","zona":"Penedès","uvas":"Chardonnay","tipo":"blanc","copa":"","botella":"36,00","magnum":"","pvp":"","estilo":"barrica untuos","maridaje":"suquet langosta","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V015","nombre":"Virolet","bodega":"Oriol Rossell","do":"DO Penedès","zona":"Penedès","uvas":"Xarel·lo","tipo":"blanc","copa":"","botella":"23,00","magnum":"","pvp":"","estilo":"fresc mineral","maridaje":"dorada paella","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V016","nombre":"Abadal Picapoll","bodega":"Bodegas Abadal","do":"DO Pla de Bages","zona":"Pla de Bages","uvas":"Picapoll","tipo":"blanc","copa":"","botella":"25,50","magnum":"","pvp":"","estilo":"floral fresc","maridaje":"gambas enscalamares","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V017","nombre":"Clos Farena","bodega":"Clos Farena","do":"DOQ Priorat","zona":"Priorat","uvas":"Garnatxa blanca","tipo":"blanc","copa":"","botella":"23,50","magnum":"","pvp":"","estilo":"mineral untuos","maridaje":"paella lubina","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V018","nombre":"Verdeo","bodega":"Torres Icons","do":"DO Rueda","zona":"Rueda","uvas":"Verdejo","tipo":"blanc","copa":"","botella":"19,00","magnum":"","pvp":"","estilo":"fresc citric","maridaje":"calamares mejillones","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V019","nombre":"Ramón Bilbao Verdejo","bodega":"Bodegas Ramón Bilbao","do":"DO Rueda","zona":"Rueda","uvas":"Verdejo","tipo":"blanc","copa":"4,50","botella":"22,00","magnum":"","pvp":"","estilo":"fresc aromatic","maridaje":"enscalamares atunteriyaki","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V020","nombre":"Regina Viarum Godello","bodega":"Regina Viarum","do":"DO Ribeira Sacra","zona":"Galícia","uvas":"Godello","tipo":"blanc","copa":"","botella":"24,50","magnum":"","pvp":"","estilo":"mineral afruitat","maridaje":"lubina dorada","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V021","nombre":"Godeval","bodega":"Bodegas Godeval","do":"DO Valdeorras","zona":"Galícia","uvas":"Godello","tipo":"blanc","copa":"","botella":"26,00","magnum":"","pvp":"","estilo":"mineral elegant","maridaje":"dorada paella","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V022","nombre":"Castillo de Monjardín Chardonnay Reserva","bodega":"Bodegas Castillo de Monjardín","do":"DO Navarra","zona":"Navarra","uvas":"Chardonnay","tipo":"blanc","copa":"","botella":"23,00","magnum":"","pvp":"","estilo":"barrica untuos","maridaje":"langosta merluza","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V023","nombre":"Viñas del Vero Chardonnay","bodega":"Viñas del Vero","do":"DO Somontano","zona":"Somontano","uvas":"Chardonnay","tipo":"blanc","copa":"","botella":"22,00","magnum":"","pvp":"","estilo":"afruitat fresc","maridaje":"mejillones boquerones","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V024","nombre":"Habla de Ti","bodega":"Bodegas Habla","do":"VT Extremadura","zona":"Extremadura","uvas":"Sauvignon blanc","tipo":"blanc","copa":"","botella":"23,50","magnum":"","pvp":"","estilo":"aromatic citric","maridaje":"atunteriyaki gambas","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V025","nombre":"Gómez Cruzado Blanco 2º Año","bodega":"Gómez Cruzado","do":"DOCa Rioja","zona":"Rioja","uvas":"Viura, Tempranillo blanco","tipo":"blanc","copa":"","botella":"22,50","magnum":"","pvp":"","estilo":"untuos afruitat","maridaje":"merluza suquet","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V026","nombre":"Camiño dos Faros","bodega":"Bodegas Cunqueiro","do":"DO Ribeiro","zona":"Galícia","uvas":"Treixadura, Torrontés, Palomino","tipo":"blanc","copa":"","botella":"22,50","magnum":"","pvp":"","estilo":"fresc floral","maridaje":"boquerones calamares","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V027","nombre":"Pazo das Bruxas","bodega":"Torre Penelas","do":"DO Rías Baixas","zona":"Rías Baixas","uvas":"Albariño","tipo":"blanc","copa":"","botella":"24,00","magnum":"","pvp":"","estilo":"fresc citric sali","maridaje":"lenguado tellarinas","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V028","nombre":"Pazo de San Mauro","bodega":"Pazo de San Mauro","do":"DO Rías Baixas","zona":"Rías Baixas","uvas":"Albariño","tipo":"blanc","copa":"","botella":"29,00","magnum":"","pvp":"","estilo":"sali afruitat","maridaje":"tellarinas carpaccio","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V029","nombre":"Mar de Frades","bodega":"Mar de Frades","do":"DO Rías Baixas","zona":"Rías Baixas","uvas":"Albariño","tipo":"blanc","copa":"6,10","botella":"32,00","magnum":"60,00","pvp":"","estilo":"sali fresc aromatic","maridaje":"carpaccio lenguado","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V030","nombre":"Albariño Sanamaro Sobre Lías","bodega":"Pazo de San Mauro","do":"DO Rías Baixas","zona":"Rías Baixas","uvas":"Albariño, Loureiro","tipo":"blanc","copa":"","botella":"53,00","magnum":"","pvp":"","estilo":"untuos elegant sali","maridaje":"suquet langosta","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V031","nombre":"Bouchard La Vignée","bodega":"Bouchard Père & Fils","do":"AOC Bourgogne Côte d'Or","zona":"Borgonya","uvas":"Chardonnay","tipo":"blanc","copa":"","botella":"39,00","magnum":"","pvp":"","estilo":"elegant mineral","maridaje":"langosta merluza","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V032","nombre":"Nathalie & Gilles Fèvre Chablis","bodega":"Domaine Nathalie & Gilles Fèvre","do":"AOC Chablis","zona":"Borgonya","uvas":"Chardonnay","tipo":"blanc","copa":"","botella":"33,00","magnum":"","pvp":"","estilo":"mineral citric","maridaje":"paella lubina","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V033","nombre":"Mosaic Rosé","bodega":"Celler Espelt","do":"DO Empordà","zona":"Empordà","uvas":"Garnatxa negra","tipo":"rosat","copa":"","botella":"21,00","magnum":"","pvp":"","estilo":"fresc fvermella","maridaje":"escalivada fritura","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V034","nombre":"El Visionari","bodega":"Celler Massís de l'Albera","do":"DO Empordà","zona":"Empordà","uvas":"Garnatxa negra","tipo":"rosat","copa":"","botella":"23,50","magnum":"","pvp":"","estilo":"fvermella lleuger","maridaje":"fritura ensaladilla","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V035","nombre":"Amic Rosat","bodega":"Clos d'Agon","do":"DO Empordà","zona":"Empordà","uvas":"Garnatxa negra, Carinyena, Cabernet franc","tipo":"rosat","copa":"","botella":"25,50","magnum":"","pvp":"","estilo":"fresc fvermella","maridaje":"marmontana fideua","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V036","nombre":"Viña Esmeralda Rosé","bodega":"Torres Icons","do":"DO Catalunya","zona":"Catalunya","uvas":"Garnatxa negra","tipo":"rosat","copa":"4,50","botella":"21,50","magnum":"","pvp":"","estilo":"floral lleuger","maridaje":"ensaladilla escalivada","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V037","nombre":"Alba del Tinar","bodega":"Clos d'Agon","do":"DO Catalunya","zona":"Catalunya","uvas":"Cabernet franc, Garnatxa roja","tipo":"rosat","copa":"","botella":"45,00","magnum":"","pvp":"","estilo":"elegant mineral","maridaje":"tataki paella","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V038","nombre":"Jean Leon 3055 Rosé","bodega":"Jean Leon","do":"DO Penedès","zona":"Penedès","uvas":"Pinot noir, Garnatxa negra","tipo":"rosat","copa":"","botella":"22,50","magnum":"","pvp":"","estilo":"fresc fvermella","maridaje":"fideua tataki","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V039","nombre":"Oriol Rossell Beach Rosé","bodega":"Oriol Rossell","do":"DO Penedès","zona":"Penedès","uvas":"Syrah, Garnatxa negra","tipo":"rosat","copa":"","botella":"23,00","magnum":"","pvp":"","estilo":"lleuger fresc","maridaje":"escalivada fritura","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V040","nombre":"Habla de Ti Rosado","bodega":"Bodegas Habla","do":"VT Extremadura","zona":"Extremadura","uvas":"Syrah, Carinyena, Garnatxa negra","tipo":"rosat","copa":"","botella":"24,00","magnum":"","pvp":"","estilo":"lleuger floral","maridaje":"fritura ensaladilla","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V041","nombre":"Ramón Bilbao Rosado","bodega":"Bodegas Ramón Bilbao","do":"DOCa Rioja","zona":"Rioja","uvas":"Garnatxa negra","tipo":"rosat","copa":"4,50","botella":"21,50","magnum":"","pvp":"","estilo":"lleuger fvermella","maridaje":"tataki marmontana","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V042","nombre":"Lalomba","bodega":"Bodegas Ramón Bilbao","do":"DOCa Rioja","zona":"Rioja","uvas":"Garnatxa negra, Viura","tipo":"rosat","copa":"","botella":"37,00","magnum":"","pvp":"","estilo":"elegant mineral","maridaje":"paella arroznegro","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V043","nombre":"La Vieille Ferme Rosé","bodega":"La Vieille Ferme","do":"AOC Luberon · Vall del Roine","zona":"Provença i Roine","uvas":"Cinsault, Garnatxa negra, Syrah","tipo":"rosat","copa":"","botella":"22,00","magnum":"","pvp":"","estilo":"lleuger afruitat","maridaje":"ensaladilla escalivada","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V044","nombre":"Studio by Miraval","bodega":"Château Miraval","do":"IGP Méditerranée","zona":"Provença i Roine","uvas":"Cinsault, Garnatxa negra, Rolle, Tibouren","tipo":"rosat","copa":"","botella":"28,00","magnum":"","pvp":"","estilo":"lleuger citric","maridaje":"escalivada fritura","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V045","nombre":"AIX Rosé","bodega":"Maison Saint Aix","do":"AOC Côtes de Provence","zona":"Provença i Roine","uvas":"Syrah, Garnatxa negra, Cinsault","tipo":"rosat","copa":"","botella":"33,50","magnum":"","pvp":"","estilo":"elegant fresc","maridaje":"arroznegro tataki","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V046","nombre":"Terra de Vents","bodega":"Celler Oliveda","do":"DO Empordà","zona":"Empordà","uvas":"Carinyena, Cabernet sauvignon","tipo":"negre","copa":"","botella":"23,00","magnum":"","pvp":"","estilo":"fnegra especiat","maridaje":"entrana costilla","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V047","nombre":"Encanteri","bodega":"Celler Massís de l'Albera","do":"DO Empordà","zona":"Empordà","uvas":"Garnatxa negra, Syrah, Carinyena","tipo":"negre","copa":"","botella":"24,50","magnum":"","pvp":"","estilo":"fvermella especiat","maridaje":"marmontana croquetas","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V048","nombre":"Perelada 5 Finques Reserva","bodega":"Perelada","do":"DO Empordà","zona":"Empordà","uvas":"Merlot, Garnatxa negra, Cabernet sauvignon, Syrah, Tempranillo, Cabernet franc","tipo":"negre","copa":"","botella":"26,50","magnum":"","pvp":"","estilo":"barrica cos","maridaje":"costilla tablajamon","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V049","nombre":"Flor d'Empordà","bodega":"Vinyes d'Olivardots","do":"DO Empordà","zona":"Empordà","uvas":"Carinyena, Garnatxa negra, Syrah","tipo":"negre","copa":"","botella":"48,00","magnum":"","pvp":"","estilo":"cos elegant fnegra","maridaje":"entrecot entrana","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V050","nombre":"Clos Ancestral","bodega":"Familia Torres","do":"DO Penedès","zona":"Penedès","uvas":"Tempranillo, Garnatxa negra, Moneu","tipo":"negre","copa":"","botella":"25,50","magnum":"","pvp":"","estilo":"fvermella fresc","maridaje":"croquetas costilla","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V051","nombre":"Magnetic","bodega":"Torres Icons","do":"DO Catalunya","zona":"Catalunya","uvas":"Garnatxa negra, Syrah","tipo":"negre","copa":"","botella":"19,00","magnum":"","pvp":"","estilo":"afruitat lleuger","maridaje":"costilla marmontana","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V052","nombre":"Secret del Priorat","bodega":"Familia Torres","do":"DOQ Priorat","zona":"Priorat","uvas":"Garnatxa negra, Carinyena, Cabernet sauvignon, Merlot, Syrah","tipo":"negre","copa":"","botella":"28,00","magnum":"","pvp":"","estilo":"cos mineral fnegra","maridaje":"entrana queso","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V053","nombre":"Celeste Roble","bodega":"Pago del Cielo","do":"DO Ribera del Duero","zona":"Ribera del Duero","uvas":"Tempranillo","tipo":"negre","copa":"","botella":"21,50","magnum":"","pvp":"","estilo":"afruitat barrica","maridaje":"marmontana croquetas","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V054","nombre":"Cruz de Alba Crianza","bodega":"Cruz de Alba","do":"DO Ribera del Duero","zona":"Ribera del Duero","uvas":"Tempranillo","tipo":"negre","copa":"","botella":"29,50","magnum":"","pvp":"","estilo":"barrica cos","maridaje":"tablajamon entrana","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V055","nombre":"Trus Reserva","bodega":"Bodegas Trus","do":"DO Ribera del Duero","zona":"Ribera del Duero","uvas":"Tempranillo","tipo":"negre","copa":"","botella":"35,00","magnum":"","pvp":"","estilo":"barrica cos especiat","maridaje":"queso entrecot","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V056","nombre":"Tomás Postigo 3er Año","bodega":"Tomás Postigo","do":"DO Ribera del Duero","zona":"Ribera del Duero","uvas":"Tempranillo, Cabernet sauvignon, Merlot, Malbec","tipo":"negre","copa":"","botella":"48,00","magnum":"","pvp":"","estilo":"cos elegant barrica","maridaje":"entrecot entrana","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V057","nombre":"Punto Geodésico","bodega":"Bodegas Trus","do":"DO Ribera del Duero","zona":"Ribera del Duero","uvas":"Tempranillo","tipo":"negre","copa":"","botella":"48,00","magnum":"","pvp":"","estilo":"cos fnegra","maridaje":"entrana queso","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V058","nombre":"Tomás Postigo Rebollo Quercus Pirenaica","bodega":"Tomás Postigo","do":"DO Ribera del Duero","zona":"Ribera del Duero","uvas":"Tempranillo, Cabernet sauvignon, Merlot, Malbec","tipo":"negre","copa":"","botella":"","magnum":"144,00","pvp":"","estilo":"cos barrica elegant","maridaje":"queso entrecot","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V059","nombre":"Malpastor Crianza","bodega":"La Carbonera","do":"DOCa Rioja Alavesa","zona":"Rioja","uvas":"Tempranillo","tipo":"negre","copa":"","botella":"20,50","magnum":"","pvp":"","estilo":"fvermella barrica","maridaje":"entrana costilla","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V060","nombre":"Ramón Bilbao Crianza","bodega":"Bodegas Ramón Bilbao","do":"DOCa Rioja","zona":"Rioja","uvas":"Tempranillo","tipo":"negre","copa":"4,50","botella":"21,50","magnum":"","pvp":"","estilo":"barrica fvermella","maridaje":"costilla tablajamon","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V061","nombre":"Ramón Bilbao Edición Limitada","bodega":"Bodegas Ramón Bilbao","do":"DOCa Rioja","zona":"Rioja","uvas":"Tempranillo","tipo":"negre","copa":"","botella":"24,50","magnum":"50,00","pvp":"","estilo":"barrica fnegra","maridaje":"tablajamon entrana","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V062","nombre":"Ramón Bilbao Reserva","bodega":"Bodegas Ramón Bilbao","do":"DOCa Rioja","zona":"Rioja","uvas":"Tempranillo, Carinyena, Graciano","tipo":"negre","copa":"","botella":"26,00","magnum":"","pvp":"","estilo":"barrica especiat","maridaje":"entrana costilla","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V063","nombre":"Puerto Rubio","bodega":"Palacios Vinos de Finca","do":"DOCa Rioja","zona":"Rioja","uvas":"Tempranillo","tipo":"negre","copa":"","botella":"56,00","magnum":"","pvp":"","estilo":"elegant cos","maridaje":"entrecot entrana","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V064","nombre":"Marqués de Vargas Reserva","bodega":"Marqués de Vargas","do":"DOCa Rioja","zona":"Rioja","uvas":"Tempranillo, Garnatxa negra, Carinyena","tipo":"negre","copa":"","botella":"34,50","magnum":"","pvp":"","estilo":"barrica elegant","maridaje":"costilla tablajamon","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V065","nombre":"Finca Ladero","bodega":"Bodegas Ramón Bilbao","do":"DOCa Rioja","zona":"Rioja","uvas":"Tempranillo, Garnatxa negra","tipo":"negre","copa":"","botella":"84,00","magnum":"","pvp":"","estilo":"elegant cos mineral","maridaje":"entrana queso","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V066","nombre":"Beaune du Château Premier Cru","bodega":"Bouchard Père & Fils","do":"AOC Beaune","zona":"Borgonya","uvas":"Pinot noir","tipo":"negre","copa":"","botella":"75,00","magnum":"","pvp":"","estilo":"elegant fvermella","maridaje":"tataki entrecot","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V067","nombre":"Terrer de la Creu Brut Nature","bodega":"Terrer de la Creu","do":"DO Cava","zona":"Cava","uvas":"Xarel·lo, Macabeu, Parellada","tipo":"escumos","copa":"4,90","botella":"21,50","magnum":"","pvp":"","estilo":"sec bombolla","maridaje":"jamon anchoas","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V068","nombre":"Vilarnau Brut Reserva","bodega":"Vilarnau","do":"DO Cava","zona":"Cava","uvas":"Macabeu, Parellada, Xarel·lo","tipo":"escumos","copa":"4,90","botella":"23,50","magnum":"","pvp":"","estilo":"fresc bombolla","maridaje":"anchoas tortillitas","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V069","nombre":"Oriol Rossell Mític Gran Reserva","bodega":"Oriol Rossell","do":"DO Cava","zona":"Cava","uvas":"Xarel·lo, Macabeu","tipo":"escumos","copa":"","botella":"29,90","magnum":"","pvp":"","estilo":"torrats sec","maridaje":"carpaccio langosta","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V070","nombre":"Ariadna Gran Reserva Blanc de Noirs","bodega":"Oriol Rossell","do":"DO Cava","zona":"Cava","uvas":"Xarel·lo, Pinot noir","tipo":"escumos","copa":"","botella":"37,50","magnum":"","pvp":"","estilo":"torrats elegant","maridaje":"langosta jamon","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V071","nombre":"Bottega Gold Prosecco","bodega":"Bottega","do":"DOC Prosecco","zona":"Prosecco","uvas":"Glera","tipo":"escumos","copa":"","botella":"38,00","magnum":"","pvp":"","estilo":"afruitat floral","maridaje":"bravas fritura","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V072","nombre":"Bottega Rosé Gold Brut","bodega":"Bottega","do":"DOC Prosecco","zona":"Prosecco","uvas":"Pinot noir","tipo":"escumos","copa":"","botella":"38,00","magnum":"","pvp":"","estilo":"fvermella fresc","maridaje":"fritura croquetas","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V073","nombre":"Pommery Apanage Brut","bodega":"Vranken-Pommery","do":"Champagne","zona":"Champagne","uvas":"Chardonnay, Pinot noir, Pinot meunier","tipo":"escumos","copa":"","botella":"70,00","magnum":"","pvp":"","estilo":"elegant torrats","maridaje":"jamon carpaccio","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V074","nombre":"Lia Pet-Nat","bodega":"Nivarius · Palacios Vinos de Finca","do":"Ancestral","zona":"Rioja","uvas":"Garnatxa negra","tipo":"escumos","copa":"","botella":"22,50","magnum":"","pvp":"","estilo":"lleuger fvermella","maridaje":"croquetas bravas","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V075","nombre":"Floralis","bodega":"Familia Torres","do":"DO Penedès","zona":"Penedès","uvas":"Moscatell","tipo":"dolc","copa":"4,50","botella":"19,70","magnum":"","pvp":"","estilo":"dolc floral","maridaje":"tatin lemonpie","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V076","nombre":"Dow's Fine Tawny","bodega":"Dow's Port","do":"DO Porto","zona":"Porto","uvas":"Touriga Nacional, Touriga Franca, Tinta Roriz","tipo":"dolc","copa":"4,50","botella":"21,90","magnum":"","pvp":"","estilo":"dolc torrats","maridaje":"fondant queso","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V077","nombre":"Vermouth Padró & Co. Reserva Especial","bodega":"Padró & Co.","do":"Bràfim","zona":"Vermuts i sangries","uvas":"","tipo":"dolc","copa":"6,50","botella":"","magnum":"","pvp":"","estilo":"dolc especiat","maridaje":"anchoas bravas","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V078","nombre":"Casals Zero","bodega":"Juan Torres Master Distillers","do":"Vermut sense alcohol","zona":"Vermuts i sangries","uvas":"","tipo":"dolc","copa":"6,00","botella":"","magnum":"","pvp":"","estilo":"especiat","maridaje":"bravas mejillones","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V079","nombre":"Sangría Lolea nº2 Blanca","bodega":"Casa Lolea","do":"","zona":"Vermuts i sangries","uvas":"","tipo":"dolc","copa":"5,90","botella":"18,50","magnum":"","pvp":"","estilo":"afruitat dolc","maridaje":"bravas fritura","stock":"","agotado":"","recomendado":"","foto":""},{"id":"V080","nombre":"Sangría Lolea nº1 Tinto","bodega":"Casa Lolea","do":"","zona":"Vermuts i sangries","uvas":"","tipo":"dolc","copa":"5,90","botella":"18,50","magnum":"","pvp":"","estilo":"afruitat dolc","maridaje":"fritura paella","stock":"","agotado":"","recomendado":"","foto":""}];
+/* Platos de la carta de comida usados en los maridajes (columna maridaje = claves separadas por espacios) */
+const DISHES = {"mejillones":{"ca":"Musclos de roca a la planxa","es":"Mejillones de roca a la plancha","en":"Grilled rock mussels","fr":"Moules de roche grillées","nl":"Gegrilde rotsmosselen"},"boquerones":{"ca":"Seitons fregits amb ratlladura de llima","es":"Boquerones fritos con ralladura de lima","en":"Fried anchovies with lime zest","fr":"Anchois frits au zeste de citron vert","nl":"Gefrituurde ansjovis met limoenrasp"},"calamares":{"ca":"Calamars a l'andalusa amb maonesa d'alfàbrega","es":"Calamares a la andaluza con mahonesa de albahaca","en":"Andalusian-style squid with basil mayonnaise","fr":"Calamars à l'andalouse, mayonnaise au basilic","nl":"Inktvis op Andalusische wijze met basilicummayonaise"},"enscalamares":{"ca":"Amanida tèbia de calamars amb salsa de soja","es":"Ensalada tibia de calamares con salsa de soja","en":"Warm squid salad with soy sauce","fr":"Salade tiède de calamars, sauce soja","nl":"Lauwwarme inktvissalade met sojasaus"},"atunteriyaki":{"ca":"Daus de tonyina amb salsa teriyaki i sèsam","es":"Dados de atún con salsa teriyaki y sésamo","en":"Tuna cubes with teriyaki sauce and sesame","fr":"Dés de thon, sauce teriyaki et sésame","nl":"Tonijnblokjes met teriyakisaus en sesam"},"gambas":{"ca":"Gambes a l'all cremat","es":"Gambas al ajillo","en":"Garlic prawns","fr":"Crevettes à l'ail","nl":"Knoflookgarnalen"},"tellarinas":{"ca":"Tellerines a la planxa amb la salsa de l'Esperança","es":"Tellarinas a la plancha con la salsa de Esperanza","en":"Grilled wedge clams with Esperanza sauce","fr":"Telline grillées, sauce Esperanza","nl":"Gegrilde zwaardschedes met Esperanza-saus"},"carpaccio":{"ca":"Carpaccio de gambes de Roses","es":"Carpaccio de gambas de Roses","en":"Roses prawn carpaccio","fr":"Carpaccio de crevettes de Roses","nl":"Garnalencarpaccio uit Roses"},"lenguado":{"ca":"Llenguado a la planxa","es":"Lenguado a la plancha","en":"Grilled sole","fr":"Sole grillée","nl":"Gegrilde tong"},"lubina":{"ca":"Llobarro de Roses obert amb alls","es":"Lubina de Roses abierta con ajos","en":"Roses sea bass, butterflied with garlic","fr":"Bar de Roses ouvert à l'ail","nl":"Zeebaars uit Roses, opengevlinderd met knoflook"},"dorada":{"ca":"Orada a la planxa a l'esquena","es":"Dorada a la plancha a la espalda","en":"Grilled butterflied sea bream","fr":"Daurade grillée, ouverte en papillon","nl":"Gegrilde opengevlinderde zeebrasem"},"paella":{"ca":"Paella marinera","es":"Paella marinera","en":"Seafood paella","fr":"Paella aux fruits de mer","nl":"Paella met zeevruchten"},"suquet":{"ca":"Suquet de peix de Roses","es":"Suquet de pescado de Roses","en":"Roses-style fish suquet","fr":"Suquet de poisson de Roses","nl":"Vissuquet op Roses-wijze"},"langosta":{"ca":"Arròs caldós de llagosta vermella","es":"Arroz caldoso de langosta roja","en":"Brothy red spiny lobster rice","fr":"Riz en bouillon à la langouste rouge","nl":"Rijst in bouillon met rode langoest"},"merluza":{"ca":"Lluç amb vinagreta d'alls tendres i puré de moniato","es":"Merluza con vinagreta de ajetes tiernos y puré de boniato","en":"Hake with young garlic vinaigrette and sweet potato purée","fr":"Merlu, vinaigrette d'ail nouveau et purée de patate douce","nl":"Heek met jongeknoflookvinaigrette en zoeteaardappelpuree"},"escalivada":{"ca":"Amanida d'escalivada amb anxoves i formatge de cabra","es":"Ensalada de escalivada con anchoas y queso de cabra","en":"Escalivada salad with anchovies and goat cheese","fr":"Salade d'escalivada, anchois et fromage de chèvre","nl":"Escalivadasalade met ansjovis en geitenkaas"},"fritura":{"ca":"Fritura de peix de Roses","es":"Fritura de pescado de Roses","en":"Roses-style mixed fried fish","fr":"Friture de poisson de Roses","nl":"Gefrituurde visschotel op Roses-wijze"},"ensaladilla":{"ca":"Ensaladilla Roses amb gambetes i tonyina","es":"Ensaladilla Roses con gambitas y atún","en":"Roses-style Russian salad with prawns and tuna","fr":"Salade russe « Roses » aux crevettes et thon","nl":"Russische salade op Roses-wijze met garnalen en tonijn"},"tataki":{"ca":"Tataki de tonyina","es":"Tataki de atún","en":"Tuna tataki","fr":"Tataki de thon","nl":"Tonijntataki"},"arroznegro":{"ca":"Arròs negre amb sípia, cloïsses i escamarlans","es":"Arroz negro con sepia, almejas y cigalas","en":"Black rice with cuttlefish, clams and langoustines","fr":"Riz noir à la seiche, palourdes et langoustines","nl":"Zwarte rijst met inktvis, venusschelpen en langoustines"},"marmontana":{"ca":"Paella mar i muntanya amb botifarra de Perol","es":"Paella mar y montaña con butifarra de Perol","en":"Surf & turf paella with Perol sausage","fr":"Paella terre et mer, saucisse de Perol","nl":"Surf & turf paella met Perol-worst"},"fideua":{"ca":"Fideuà amb sípia i cloïsses","es":"Fideuá con sepia y almejas","en":"Fideuá with cuttlefish and clams","fr":"Fideuá à la seiche et aux palourdes","nl":"Fideuá met inktvis en venusschelpen"},"croquetas":{"ca":"Mix de croquetes de la casa","es":"Mix de croquetas de la casa","en":"House croquette mix","fr":"Assortiment de croquettes maison","nl":"Huisgemaakte kroketten, gemengd"},"entrana":{"ca":"Entranya a la graella amb salsa «Chimichurri»","es":"Entraña a la parrilla con salsa «Chimichurri»","en":"Grilled skirt steak with chimichurri sauce","fr":"Onglet grillé, sauce chimichurri","nl":"Gegrild runderlapje met chimichurrisaus"},"costilla":{"ca":"Costella de porc rostida al forn amb salsa barbacoa","es":"Costilla de cerdo asada al horno con salsa barbacoa","en":"Oven-roasted pork ribs with barbecue sauce","fr":"Travers de porc rôti au four, sauce barbecue","nl":"Ovengebakken spareribs met barbecuesaus"},"tablajamon":{"ca":"Taula de pernil de Guijuelo, formatge manxec i pa amb tomàquet","es":"Tabla de jamón de Guijuelo, queso manchego y pan con tomate","en":"Guijuelo ham, manchego cheese and tomato bread board","fr":"Planche de jambon de Guijuelo, fromage manchego et pain à la tomate","nl":"Plank met Guijuelo-ham, manchegokaas en tomatenbrood"},"entrecot":{"ca":"Entrecot de vedella de Girona","es":"Entrecot de ternera de Girona","en":"Girona beef entrecôte","fr":"Entrecôte de veau de Gérone","nl":"Runderentrecote uit Girona"},"queso":{"ca":"Formatge Manxec amb nous i mel","es":"Queso Manchego con nueces y miel","en":"Manchego cheese with walnuts and honey","fr":"Fromage Manchego, noix et miel","nl":"Manchegokaas met walnoten en honing"},"jamon":{"ca":"Pernil de Guijuelo amb pa amb tomàquet","es":"Jamón de Guijuelo con pan con tomate","en":"Guijuelo ham with tomato bread","fr":"Jambon de Guijuelo et pain à la tomate","nl":"Guijuelo-ham met tomatenbrood"},"anchoas":{"ca":"Mix d'anxoves i seitons amb pa amb tomàquet","es":"Mix de anchoas y boquerones con pan con tomate","en":"Anchovy mix with tomato bread","fr":"Assortiment d'anchois marinés et frits, pain à la tomate","nl":"Ansjovismix met tomatenbrood"},"tortillitas":{"ca":"Coquetes de camarons","es":"Tortillitas de camarones","en":"Shrimp fritters","fr":"Beignets de crevettes grises","nl":"Garnalenbeignets"},"bravas":{"ca":"Patates braves amb dues salses","es":"Patatas bravas con dos salsas","en":"Patatas bravas with two sauces","fr":"Patatas bravas, deux sauces","nl":"Patatas bravas met twee sauzen"},"tatin":{"ca":"Pastís Tatin de poma amb vainilla","es":"Tarta Tatin de manzana con vainilla","en":"Apple Tatin tart with vanilla","fr":"Tarte Tatin aux pommes et vanille","nl":"Appeltaart Tatin met vanille"},"lemonpie":{"ca":"Lemon Pie","es":"Lemon Pie","en":"Lemon Pie","fr":"Tarte au citron","nl":"Lemon Pie"},"tartaqueso":{"ca":"Pastís de formatge amb coulis de mango i nata","es":"Tarta de queso con coulis de mango y nata","en":"Cheesecake with mango coulis and cream","fr":"Cheesecake, coulis de mangue et crème","nl":"Cheesecake met mangocoulis en room"},"fondant":{"ca":"Fondant de xocolata amb llet","es":"Fondant de chocolate con leche","en":"Milk chocolate fondant","fr":"Fondant au chocolat au lait","nl":"Melkchocoladefondant"}};
+
+const LANGS = ['ca','es','en','fr','nl'];
+const UI = {
+  title:{ca:'Carta de vins',es:'Carta de vinos',en:'Wine list',fr:'Carte des vins',nl:'Wijnkaart'},
+  tag:{ca:'40 anys vora el mar',es:'40 años junto al mar',en:'40 years by the sea',fr:'40 ans au bord de la mer',nl:'40 jaar aan zee'},
+  all:{ca:'Tots',es:'Todos',en:'All',fr:'Tous',nl:'Alle'},
+  search:{ca:'Cerca un vi, celler o raïm',es:'Busca un vino, bodega o uva',en:'Search wine, winery or grape',fr:'Chercher un vin, domaine ou cépage',nl:'Zoek wijn, wijnhuis of druif'},
+  filters:{ca:'Filtres',es:'Filtros',en:'Filters',fr:'Filtres',nl:'Filters'},
+  zona:{ca:'Denominació',es:'Denominación',en:'Region',fr:'Appellation',nl:'Herkomst'},
+  uva:{ca:'Varietat',es:'Variedad',en:'Grape',fr:'Cépage',nl:'Druif'},
+  estilo:{ca:'Nota de tast',es:'Nota de cata',en:'Tasting note',fr:'Note de dégustation',nl:'Smaakprofiel'},
+  servei:{ca:'Servei',es:'Servicio',en:'Serving',fr:'Service',nl:'Serveerwijze'},
+  copas:{ca:'També per copes',es:'También por copas',en:'Also by the glass',fr:'Aussi au verre',nl:'Ook per glas'},
+  clear:{ca:'Esborra els filtres',es:'Borrar filtros',en:'Clear filters',fr:'Effacer les filtres',nl:'Filters wissen'},
+  count:{ca:n=>n+(n===1?' vi':' vins'),es:n=>n+(n===1?' vino':' vinos'),en:n=>n+(n===1?' wine':' wines'),fr:n=>n+(n===1?' vin':' vins'),nl:n=>n+(n===1?' wijn':' wijnen')},
+  none:{ca:'Cap vi coincideix amb aquests filtres.',es:'Ningún vino coincide con estos filtros.',en:'No wines match these filters.',fr:'Aucun vin ne correspond à ces filtres.',nl:'Geen wijnen gevonden met deze filters.'},
+  pair:{ca:'Marida amb',es:'Marida con',en:'Pairs with',fr:"S'accorde avec",nl:'Lekker bij'},
+  pick:{ca:'Recomanat pel sommelier',es:'Recomendado por el sumiller',en:"Sommelier's pick",fr:'Choix du sommelier',nl:'Keuze van de sommelier'},
+  copa:{ca:'Copa',es:'Copa',en:'Glass',fr:'Verre',nl:'Glas'},
+  botella:{ca:'Ampolla',es:'Botella',en:'Bottle',fr:'Bouteille',nl:'Fles'},
+  magnum:{ca:'Màgnum',es:'Mágnum',en:'Magnum',fr:'Magnum',nl:'Magnum'},
+  pvp:{ca:'Per emportar',es:'Para llevar',en:'To take away',fr:'À emporter',nl:'Om mee te nemen'},
+  foot:{ca:"L'Àncora Bar Restaurant · Roses, Costa Brava<br>Preus en euros, IVA inclòs · 1986–2026",es:"L'Àncora Bar Restaurant · Roses, Costa Brava<br>Precios en euros, IVA incluido · 1986–2026",en:"L'Àncora Bar Restaurant · Roses, Costa Brava<br>Prices in euros, VAT included · 1986–2026",fr:"L'Àncora Bar Restaurant · Roses, Costa Brava<br>Prix en euros, TVA comprise · 1986–2026",nl:"L'Àncora Bar Restaurant · Roses, Costa Brava<br>Prijzen in euro, incl. btw · 1986–2026"}
+};
+const TYPES = {
+  blanc:{ca:'Blancs',es:'Blancos',en:'Whites',fr:'Blancs',nl:'Wit'},
+  rosat:{ca:'Rosats',es:'Rosados',en:'Rosés',fr:'Rosés',nl:'Rosé'},
+  negre:{ca:'Negres',es:'Tintos',en:'Reds',fr:'Rouges',nl:'Rood'},
+  escumos:{ca:'Escumosos',es:'Espumosos',en:'Sparkling',fr:'Effervescents',nl:'Mousserend'},
+  dolc:{ca:'Dolços i vermuts',es:'Dulces y vermuts',en:'Sweet & vermouth',fr:'Doux et vermouths',nl:'Zoet & vermout'}
+};
+const STYLES = {
+  fresc:{ca:'Fresc',es:'Fresco',en:'Fresh',fr:'Frais',nl:'Fris'},
+  citric:{ca:'Cítric',es:'Cítrico',en:'Citrus',fr:'Agrumes',nl:'Citrus'},
+  floral:{ca:'Floral',es:'Floral',en:'Floral',fr:'Floral',nl:'Bloemig'},
+  afruitat:{ca:'Afruitat',es:'Afrutado',en:'Fruity',fr:'Fruité',nl:'Fruitig'},
+  aromatic:{ca:'Aromàtic',es:'Aromático',en:'Aromatic',fr:'Aromatique',nl:'Aromatisch'},
+  mineral:{ca:'Mineral',es:'Mineral',en:'Mineral',fr:'Minéral',nl:'Mineraal'},
+  sali:{ca:'Salí',es:'Salino',en:'Saline',fr:'Salin',nl:'Zilt'},
+  lleuger:{ca:'Lleuger',es:'Ligero',en:'Light',fr:'Léger',nl:'Licht'},
+  untuos:{ca:'Untuós',es:'Untuoso',en:'Rounded',fr:'Rond',nl:'Rond'},
+  barrica:{ca:'Criança en bota',es:'Crianza en barrica',en:'Oak-aged',fr:'Élevé en fût',nl:'Houtgerijpt'},
+  fvermella:{ca:'Fruita vermella',es:'Fruta roja',en:'Red fruit',fr:'Fruits rouges',nl:'Rood fruit'},
+  fnegra:{ca:'Fruita negra',es:'Fruta negra',en:'Dark fruit',fr:'Fruits noirs',nl:'Donker fruit'},
+  especiat:{ca:'Especiat',es:'Especiado',en:'Spicy',fr:'Épicé',nl:'Kruidig'},
+  cos:{ca:'Amb cos',es:'Con cuerpo',en:'Full-bodied',fr:'Corsé',nl:'Vol'},
+  elegant:{ca:'Elegant',es:'Elegante',en:'Elegant',fr:'Élégant',nl:'Elegant'},
+  sec:{ca:'Sec',es:'Seco',en:'Dry',fr:'Sec',nl:'Droog'},
+  bombolla:{ca:'Bombolla fina',es:'Burbuja fina',en:'Fine bubbles',fr:'Bulles fines',nl:'Fijne bubbels'},
+  torrats:{ca:'Torrats',es:'Tostados',en:'Toasty',fr:'Notes grillées',nl:'Getoast'},
+  dolc:{ca:'Dolç',es:'Dulce',en:'Sweet',fr:'Doux',nl:'Zoet'}
+};
+const GLASS = {blanc:'#8d9a55',rosat:'#e2a59b',negre:'#3b2030',escumos:'#2f4a3a',dolc:'#b3742c'};
+
+let LANG = (()=>{ try{const s=localStorage.getItem('lancora_lang'); if(LANGS.includes(s)) return s;}catch(e){}
+  for(const l of (navigator.languages||[navigator.language||'ca'])){const c=l.slice(0,2).toLowerCase(); if(LANGS.includes(c)) return c;} return 'ca'; })();
+let FS = 1; try{FS=parseFloat(localStorage.getItem('lancoraFontScale'))||1;}catch(e){}
+const tr = o => o[LANG] || o.ca;
+const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm = s => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+const num = v => { const n=parseFloat(String(v||'').replace(/[^0-9,.]/g,'').replace(',','.')); return isNaN(n)?null:n; };
+const price = n => n.toFixed(2).replace('.',',');
+const yes = v => /^(si|sí|x|1|true|verdadero)$/i.test(String(v||'').trim());
+
+function prep(rows){
+  return rows.filter(r=>r.nombre && TYPES[r.tipo]).map(r=>({
+    id:r.id, n:r.nombre, prod:r.bodega||'', do:r.do||'', zona:r.zona||'',
+    uvas:String(r.uvas||'').split(',').map(s=>s.trim()).filter(Boolean), tipo:r.tipo,
+    p:{copa:num(r.copa),botella:num(r.botella),magnum:num(r.magnum),pvp:num(r.pvp)},
+    est:String(r.estilo||'').split(/[\s,]+/).filter(k=>STYLES[k]),
+    out: yes(r.agotado) || (String(r.stock||'').trim()!=='' && num(r.stock)<=0),
+    mar:String(r.maridaje||'').split(/[\s,]+/).filter(k=>DISHES[k]),
+    pick: yes(r.recomendado), foto:r.foto||''
+  })).filter(w=>!w.out);
+}
+function parseCSV(text){
+  const out=[]; let row=[],cur='',q=false;
+  for(let i=0;i<text.length;i++){const c=text[i];
+    if(q){ if(c==='"'){ if(text[i+1]==='"'){cur+='"';i++;} else q=false; } else cur+=c; }
+    else if(c==='"') q=true; else if(c===','){row.push(cur);cur='';}
+    else if(c==='\n'){row.push(cur);out.push(row);row=[];cur='';} else if(c!=='\r') cur+=c; }
+  if(cur!==''||row.length){row.push(cur);out.push(row);}
+  const head=out.shift().map(h=>norm(h.trim()));
+  return out.map(r=>Object.fromEntries(head.map((h,i)=>[h,(r[i]||'').trim()])));
+}
+
+let WINES = prep(WINES_LOCAL);
+const F = {tipo:null, q:'', zona:new Set(), uva:new Set(), est:new Set(), copas:false};
+
+function bottle(w){
+  if(w.foto) return `<img src="${esc(w.foto)}" alt="" loading="lazy">`;
+  const sp = w.tipo==='escumos';
+  const body = sp ? 'M16 4h8v30c0 10 8 12 8 26v48a6 6 0 0 1-6 6H14a6 6 0 0 1-6-6V60c0-14 8-16 8-26z'
+                  : 'M16 4h8v24c0 8 9 10 9 22v58a6 6 0 0 1-6 6H13a6 6 0 0 1-6-6V50c0-12 9-14 9-22z';
+  return `<svg viewBox="0 0 40 120" aria-hidden="true"><path d="${body}" fill="${GLASS[w.tipo]}" stroke="var(--hair)" stroke-width="1"/>
+  <rect x="15.5" y="3" width="9" height="${sp?22:12}" rx="1.5" fill="${sp?'#c8963e':'#1c3454'}"/>
+  <rect x="10" y="66" width="20" height="26" rx="1.5" fill="#f5f0e6"/><path d="M13 74h14M13 79h14M15 84h10" stroke="#1c3454" stroke-width="1" opacity=".55" fill="none"/></svg>`;
+}
+function card(w){
+  const pr = ['copa','botella','magnum','pvp'].filter(k=>w.p[k]!=null)
+    .map(k=>`<div><span class="k">${tr(UI[k])}</span><span class="v">${price(w.p[k])}</span></div>`).join('');
+  const meta = [w.prod?`<b>${esc(w.prod)}</b>`:'', esc(w.do)].filter(Boolean).join(' · ');
+  return `<article class="wine"><div class="pic">${bottle(w)}</div><div class="body">
+    ${w.pick?`<span class="pick">${tr(UI.pick)}</span>`:''}
+    <h3>${esc(w.n)}</h3>
+    ${meta?`<div class="meta">${meta}</div>`:''}
+    ${w.uvas.length?`<div class="grapes">${esc(w.uvas.join(', '))}</div>`:''}
+    ${w.est.length?`<div class="tags">${w.est.map(k=>`<span class="tag">${tr(STYLES[k])}</span>`).join('')}</div>`:''}
+    ${w.mar.length?`<div class="pair"><span>${tr(UI.pair)}</span> ${w.mar.map(k=>esc(tr(DISHES[k]))).join(' · ')}</div>`:''}
+    <div class="prices">${pr}</div></div></article>`;
+}
+function match(w, skip){
+  if(skip!=='tipo' && F.tipo && w.tipo!==F.tipo) return false;
+  if(F.copas && w.p.copa==null) return false;
+  if(F.zona.size && !F.zona.has(w.zona)) return false;
+  if(F.uva.size && !w.uvas.some(u=>F.uva.has(u))) return false;
+  if(F.est.size && !w.est.some(e=>F.est.has(e))) return false;
+  if(F.q){ const h=norm([w.n,w.prod,w.do,w.zona,w.uvas.join(' '),w.mar.map(k=>tr(DISHES[k])+' '+DISHES[k].es).join(' ')].join(' ')); if(!norm(F.q).split(/\s+/).every(t=>h.includes(t))) return false; }
+  return true;
+}
+const active = () => F.zona.size+F.uva.size+F.est.size+(F.copas?1:0);
+
+function chip(group,val,label,on,n){
+  return `<button class="chip" type="button" data-g="${group}" data-v="${esc(val)}" aria-pressed="${on}">${esc(label)}${n!=null?`<span class="n">${n}</span>`:''}</button>`;
+}
+function tally(get){ const m=new Map(); WINES.forEach(w=>get(w).forEach(v=>m.set(v,(m.get(v)||0)+1))); return m; }
+
+function renderTypes(){
+  const pool = WINES.filter(w=>match(w,'tipo'));
+  document.getElementById('types').innerHTML = chip('tipo','',tr(UI.all),!F.tipo,pool.length) +
+    Object.keys(TYPES).map(k=>{const n=pool.filter(w=>w.tipo===k).length; return n?chip('tipo',k,tr(TYPES[k]),F.tipo===k,n):'';}).join('');
+}
+function renderPanel(){
+  const zonas=[...tally(w=>w.zona?[w.zona]:[])].sort((a,b)=>b[1]-a[1]);
+  const uvas=[...tally(w=>w.uvas)].filter(e=>e[1]>=2).sort((a,b)=>b[1]-a[1]);
+  const ests=Object.keys(STYLES).filter(k=>WINES.some(w=>w.est.includes(k)));
+  document.getElementById('panel').innerHTML =
+    `<div><h3>${tr(UI.servei)}</h3><div class="set">${chip('copas','1',tr(UI.copas),F.copas)}</div></div>
+     <div><h3>${tr(UI.estilo)}</h3><div class="set">${ests.map(k=>chip('est',k,tr(STYLES[k]),F.est.has(k))).join('')}</div></div>
+     <div><h3>${tr(UI.zona)}</h3><div class="set">${zonas.map(([z,n])=>chip('zona',z,z,F.zona.has(z),n)).join('')}</div></div>
+     <div><h3>${tr(UI.uva)}</h3><div class="set">${uvas.map(([u,n])=>chip('uva',u,u,F.uva.has(u),n)).join('')}</div></div>`;
+}
+function renderList(){
+  const list = WINES.filter(w=>match(w));
+  const main = document.getElementById('main');
+  if(!list.length){ main.innerHTML=`<div class="empty"><p>${tr(UI.none)}</p><button class="clear" type="button" data-clear="1">${tr(UI.clear)}</button></div>`; }
+  else main.innerHTML = Object.keys(TYPES).map(k=>{
+    const ws=list.filter(w=>w.tipo===k); if(!ws.length) return '';
+    ws.sort((a,b)=>(b.pick?1:0)-(a.pick?1:0));
+    return `<section><h2>${tr(TYPES[k])}<span class="count">${ws.length}</span></h2><div class="list">${ws.map(card).join('')}</div></section>`;
+  }).join('');
+  document.getElementById('count').textContent = tr(UI.count)(list.length);
+  const n=active();
+  document.getElementById('fbtn').textContent = tr(UI.filters)+(n?` · ${n}`:'');
+  const c=document.getElementById('clear'); c.hidden = !(n||F.q||F.tipo); c.textContent=tr(UI.clear);
+}
+function renderAll(){
+  document.documentElement.lang=LANG;
+  document.documentElement.style.setProperty('--fs',FS);
+  document.getElementById('t-title').textContent=tr(UI.title);
+  document.getElementById('t-tag').textContent=tr(UI.tag);
+  document.getElementById('q').placeholder=tr(UI.search);
+  document.getElementById('q').setAttribute('aria-label',tr(UI.search));
+  document.getElementById('foot').innerHTML=tr(UI.foot);
+  document.getElementById('widget').innerHTML = LANGS.map(l=>`<button type="button" data-lang="${l}" aria-pressed="${l===LANG}">${l.toUpperCase()}</button>`).join('')+
+    `<span class="sep"></span><button type="button" id="fsbtn" aria-label="A+" aria-pressed="false">A+</button>`;
+  renderTypes(); renderPanel(); renderList();
+}
+function clearAll(){ F.tipo=null;F.q='';F.zona.clear();F.uva.clear();F.est.clear();F.copas=false; document.getElementById('q').value=''; renderAll(); }
+
+document.addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  if(b.dataset.lang){ LANG=b.dataset.lang; try{localStorage.setItem('lancora_lang',LANG);}catch(_){} renderAll(); return; }
+  if(b.id==='fsbtn'){ const st=[1,1.15,1.3]; FS=st[(st.findIndex(s=>Math.abs(s-FS)<.01)+1)%st.length]; try{localStorage.setItem('lancoraFontScale',FS);}catch(_){} document.documentElement.style.setProperty('--fs',FS); return; }
+  if(b.id==='fbtn'){ const p=document.getElementById('panel'); p.hidden=!p.hidden; b.setAttribute('aria-expanded',String(!p.hidden)); return; }
+  if(b.id==='clear'||b.dataset.clear){ clearAll(); return; }
+  const g=b.dataset.g, v=b.dataset.v; if(!g) return;
+  if(g==='tipo') F.tipo=v||null; else if(g==='copas') F.copas=!F.copas; else { F[g].has(v)?F[g].delete(v):F[g].add(v); }
+  renderTypes(); renderPanel(); renderList();
+});
+document.getElementById('q').addEventListener('input',e=>{ F.q=e.target.value.trim(); renderTypes(); renderList(); });
+
+renderAll();
+if(SHEET_CSV_URL){
+  fetch(SHEET_CSV_URL,{cache:'no-store'}).then(r=>r.ok?r.text():Promise.reject()).then(t=>{ const w=prep(parseCSV(t)); if(w.length){ WINES=w; renderAll(); } }).catch(()=>{});
+}
+</script>
+
+</body>
+</html>
