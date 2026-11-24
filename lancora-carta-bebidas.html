@@ -233,6 +233,7 @@
   footer .anchor-icon{ width:40px; height:40px; opacity:0.85; margin-bottom:14px; }
   footer p{ font-size:calc(13.5px * var(--fs-scale)); letter-spacing:1.5px; text-transform:uppercase; opacity:0.7; line-height:2; }
   footer .leafwrap{ position:absolute; opacity:0.06; }
+.emblem.emblem-logo{width:auto;height:auto}.emblem-logo .brand-logo{height:120px;width:auto;display:block;margin:0 auto}.sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 </style>
 <style id="tema-ancora-2026">
 /* Tema L'Àncora 2026: arena, azul marino y dorado; Cormorant Garamond + Jost */
@@ -268,6 +269,7 @@ footer p{letter-spacing:.01em!important;text-transform:none!important}
 .wine-cta-txt span{font-size:14px;opacity:.85}
 .wine-cta-go{margin-left:auto;font-size:22px;color:var(--gold)}
 @media(max-width:940px){.wine-cta{margin:14px 16px 0}}
+.hero .emblem.emblem-logo,.emblem.emblem-logo{background:none!important;width:auto!important;height:auto!important;border:0!important;border-radius:0!important;box-shadow:none!important;padding:0!important}
 </style>
 </head>
 <body>
@@ -297,12 +299,9 @@ footer p{letter-spacing:.01em!important;text-transform:none!important}
   </svg>
 
   <div class="hero-content">
-    <div class="emblem">
-      <svg class="rope" viewBox="0 0 100 100"><use href="#ic-rope"/></svg>
-      <svg class="anchor-icon" viewBox="0 0 100 100"><use href="#ic-anchor"/></svg>
-    </div>
+    <div class="emblem emblem-logo"><img class="brand-logo" src="https://raw.githubusercontent.com/Ancoraroses/lancora-media/main/brand/logo-vertical.png" alt="L'Àncora Bar Restaurant" height="120"></div>
     <div class="eyebrow">Bar · Restaurant · Roses</div>
-    <h1>L'Àncora</h1>
+    <h1 class="sr-only">L'Àncora</h1>
     <div class="tagline" id="tagline">Carta de begudes · 40 anys vora el mar</div>
     <svg class="divider-wave" viewBox="0 0 70 12" fill="none" stroke="currentColor" stroke-width="1.5">
       <path d="M0 6 Q 9 0, 17.5 6 T 35 6 T 52.5 6 T 70 6"/>
