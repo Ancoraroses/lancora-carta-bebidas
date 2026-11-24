@@ -1,78 +1,78 @@
 id,nombre,bodega,do,zona,uvas,tipo,copa,botella,magnum,pvp,estilo,maridaje,stock,agotado,recomendado,foto
-V001,"L'Àncora, el nostre vi",Marqués de Vizhoja,,Galícia,"Albariño, Loureiro",blanc,"4,10","17,00",,"11,00",fresc afruitat lleuger,mejillones boquerones,,,,
-V002,Mar Endins,Celler Oliveda,DO Empordà,Empordà,Garnatxa blanca,blanc,,"21,00",,,fresc afruitat,boquerones calamares,,,,
-V003,L'Encís,Vinos del Paseante,DO Empordà,Empordà,"Sauvignon blanc, Garnatxa blanca",blanc,,"21,50",,,aromatic citric,enscalamares atunteriyaki,,,,
-V004,Cap de Creus Nacre,Joan Sardà,DO Empordà,Empordà,"Garnatxa blanca, Garnatxa roja",blanc,,"22,90",,,mineral sali,tellarinas carpaccio,,,,
-V005,Garoina,Celler Oliveda,DO Empordà,Empordà,Chardonnay,blanc,,"21,50",,,afruitat fresc,calamares mejillones,,,,
-V006,Joana,Celler Oliveda,DO Empordà,Empordà,Chardonnay,blanc,,"25,00",,,untuos afruitat,suquet langosta,,,,
-V007,Quinze Roures,Espelt Viticultors,DO Empordà,Empordà,"Garnatxa blanca, Garnatxa roja",blanc,,"23,50",,,barrica untuos,langosta merluza,,,,
-V008,Mas Oller Mar Blanc,Mas Oller,DO Empordà,Empordà,"Picapoll, Malvasia",blanc,,"24,50",,,fresc sali floral,carpaccio lenguado,,,,
-V009,Magnetic Blanc,Torres Icons,DO Catalunya,Catalunya,"Garnatxa blanca, Sauvignon blanc",blanc,,"19,00",,,fresc afruitat,mejillones boquerones,,,,
-V010,Les Tortugues,Celler Massís de l'Albera,DO Empordà,Empordà,Garnatxa roja,blanc,,"29,50",,,mineral untuos,lubina dorada,,,,
-V011,Viña Esmeralda,Torres Icons,DO Penedès,Penedès,Moscatell,blanc,"4,50","21,00",,,aromatic floral,atunteriyaki gambas,,,,
-V012,Jean Leon 3055 Chardonnay,Jean Leon,DO Penedès,Penedès,Chardonnay,blanc,,"22,50",,,afruitat fresc,boquerones calamares,,,,
-V013,Fransola,Familia Torres,DO Penedès,Penedès,Sauvignon blanc,blanc,,"40,00",,,barrica aromatic elegant,merluza suquet,,,,
-V014,Jean Leon Vinya Gigi Chardonnay,Jean Leon,DO Penedès,Penedès,Chardonnay,blanc,,"36,00",,,barrica untuos,suquet langosta,,,,
-V015,Virolet,Oriol Rossell,DO Penedès,Penedès,Xarel·lo,blanc,,"23,00",,,fresc mineral,dorada paella,,,,
-V016,Abadal Picapoll,Bodegas Abadal,DO Pla de Bages,Pla de Bages,Picapoll,blanc,,"25,50",,,floral fresc,gambas enscalamares,,,,
-V017,Clos Farena,Clos Farena,DOQ Priorat,Priorat,Garnatxa blanca,blanc,,"23,50",,,mineral untuos,paella lubina,,,,
-V018,Verdeo,Torres Icons,DO Rueda,Rueda,Verdejo,blanc,,"19,00",,,fresc citric,calamares mejillones,,,,
-V019,Ramón Bilbao Verdejo,Bodegas Ramón Bilbao,DO Rueda,Rueda,Verdejo,blanc,"4,50","22,00",,,fresc aromatic,enscalamares atunteriyaki,,,,
-V020,Regina Viarum Godello,Regina Viarum,DO Ribeira Sacra,Galícia,Godello,blanc,,"24,50",,,mineral afruitat,lubina dorada,,,,
-V021,Godeval,Bodegas Godeval,DO Valdeorras,Galícia,Godello,blanc,,"26,00",,,mineral elegant,dorada paella,,,,
-V022,Castillo de Monjardín Chardonnay Reserva,Bodegas Castillo de Monjardín,DO Navarra,Navarra,Chardonnay,blanc,,"23,00",,,barrica untuos,langosta merluza,,,,
-V023,Viñas del Vero Chardonnay,Viñas del Vero,DO Somontano,Somontano,Chardonnay,blanc,,"22,00",,,afruitat fresc,mejillones boquerones,,,,
-V024,Habla de Ti,Bodegas Habla,VT Extremadura,Extremadura,Sauvignon blanc,blanc,,"23,50",,,aromatic citric,atunteriyaki gambas,,,,
-V025,Gómez Cruzado Blanco 2º Año,Gómez Cruzado,DOCa Rioja,Rioja,"Viura, Tempranillo blanco",blanc,,"22,50",,,untuos afruitat,merluza suquet,,,,
-V026,Camiño dos Faros,Bodegas Cunqueiro,DO Ribeiro,Galícia,"Treixadura, Torrontés, Palomino",blanc,,"22,50",,,fresc floral,boquerones calamares,,,,
-V027,Pazo das Bruxas,Torre Penelas,DO Rías Baixas,Rías Baixas,Albariño,blanc,,"24,00",,,fresc citric sali,lenguado tellarinas,,,,
-V028,Pazo de San Mauro,Pazo de San Mauro,DO Rías Baixas,Rías Baixas,Albariño,blanc,,"29,00",,,sali afruitat,tellarinas carpaccio,,,,
-V029,Mar de Frades,Mar de Frades,DO Rías Baixas,Rías Baixas,Albariño,blanc,"6,10","32,00","60,00",,sali fresc aromatic,carpaccio lenguado,,,,
-V030,Albariño Sanamaro Sobre Lías,Pazo de San Mauro,DO Rías Baixas,Rías Baixas,"Albariño, Loureiro",blanc,,"53,00",,,untuos elegant sali,suquet langosta,,,,
-V031,Bouchard La Vignée,Bouchard Père & Fils,AOC Bourgogne Côte d'Or,Borgonya,Chardonnay,blanc,,"39,00",,,elegant mineral,langosta merluza,,,,
-V032,Nathalie & Gilles Fèvre Chablis,Domaine Nathalie & Gilles Fèvre,AOC Chablis,Borgonya,Chardonnay,blanc,,"33,00",,,mineral citric,paella lubina,,,,
-V033,Mosaic Rosé,Celler Espelt,DO Empordà,Empordà,Garnatxa negra,rosat,,"21,00",,,fresc fvermella,escalivada fritura,,,,
-V034,El Visionari,Celler Massís de l'Albera,DO Empordà,Empordà,Garnatxa negra,rosat,,"23,50",,,fvermella lleuger,fritura ensaladilla,,,,
-V035,Amic Rosat,Clos d'Agon,DO Empordà,Empordà,"Garnatxa negra, Carinyena, Cabernet franc",rosat,,"25,50",,,fresc fvermella,marmontana fideua,,,,
-V036,Viña Esmeralda Rosé,Torres Icons,DO Catalunya,Catalunya,Garnatxa negra,rosat,"4,50","21,50",,,floral lleuger,ensaladilla escalivada,,,,
-V037,Alba del Tinar,Clos d'Agon,DO Catalunya,Catalunya,"Cabernet franc, Garnatxa roja",rosat,,"45,00",,,elegant mineral,tataki paella,,,,
-V038,Jean Leon 3055 Rosé,Jean Leon,DO Penedès,Penedès,"Pinot noir, Garnatxa negra",rosat,,"22,50",,,fresc fvermella,fideua tataki,,,,
-V039,Oriol Rossell Beach Rosé,Oriol Rossell,DO Penedès,Penedès,"Syrah, Garnatxa negra",rosat,,"23,00",,,lleuger fresc,escalivada fritura,,,,
-V040,Habla de Ti Rosado,Bodegas Habla,VT Extremadura,Extremadura,"Syrah, Carinyena, Garnatxa negra",rosat,,"24,00",,,lleuger floral,fritura ensaladilla,,,,
-V041,Ramón Bilbao Rosado,Bodegas Ramón Bilbao,DOCa Rioja,Rioja,Garnatxa negra,rosat,"4,50","21,50",,,lleuger fvermella,tataki marmontana,,,,
-V042,Lalomba,Bodegas Ramón Bilbao,DOCa Rioja,Rioja,"Garnatxa negra, Viura",rosat,,"37,00",,,elegant mineral,paella arroznegro,,,,
-V043,La Vieille Ferme Rosé,La Vieille Ferme,AOC Luberon · Vall del Roine,Provença i Roine,"Cinsault, Garnatxa negra, Syrah",rosat,,"22,00",,,lleuger afruitat,ensaladilla escalivada,,,,
-V044,Studio by Miraval,Château Miraval,IGP Méditerranée,Provença i Roine,"Cinsault, Garnatxa negra, Rolle, Tibouren",rosat,,"28,00",,,lleuger citric,escalivada fritura,,,,
-V045,AIX Rosé,Maison Saint Aix,AOC Côtes de Provence,Provença i Roine,"Syrah, Garnatxa negra, Cinsault",rosat,,"33,50",,,elegant fresc,arroznegro tataki,,,,
-V046,Terra de Vents,Celler Oliveda,DO Empordà,Empordà,"Carinyena, Cabernet sauvignon",negre,,"23,00",,,fnegra especiat,entrana costilla,,,,
-V047,Encanteri,Celler Massís de l'Albera,DO Empordà,Empordà,"Garnatxa negra, Syrah, Carinyena",negre,,"24,50",,,fvermella especiat,marmontana croquetas,,,,
-V048,Perelada 5 Finques Reserva,Perelada,DO Empordà,Empordà,"Merlot, Garnatxa negra, Cabernet sauvignon, Syrah, Tempranillo, Cabernet franc",negre,,"26,50",,,barrica cos,costilla tablajamon,,,,
-V049,Flor d'Empordà,Vinyes d'Olivardots,DO Empordà,Empordà,"Carinyena, Garnatxa negra, Syrah",negre,,"48,00",,,cos elegant fnegra,entrecot entrana,,,,
-V050,Clos Ancestral,Familia Torres,DO Penedès,Penedès,"Tempranillo, Garnatxa negra, Moneu",negre,,"25,50",,,fvermella fresc,croquetas costilla,,,,
-V051,Magnetic,Torres Icons,DO Catalunya,Catalunya,"Garnatxa negra, Syrah",negre,,"19,00",,,afruitat lleuger,costilla marmontana,,,,
-V052,Secret del Priorat,Familia Torres,DOQ Priorat,Priorat,"Garnatxa negra, Carinyena, Cabernet sauvignon, Merlot, Syrah",negre,,"28,00",,,cos mineral fnegra,entrana queso,,,,
-V053,Celeste Roble,Pago del Cielo,DO Ribera del Duero,Ribera del Duero,Tempranillo,negre,,"21,50",,,afruitat barrica,marmontana croquetas,,,,
-V054,Cruz de Alba Crianza,Cruz de Alba,DO Ribera del Duero,Ribera del Duero,Tempranillo,negre,,"29,50",,,barrica cos,tablajamon entrana,,,,
-V055,Trus Reserva,Bodegas Trus,DO Ribera del Duero,Ribera del Duero,Tempranillo,negre,,"35,00",,,barrica cos especiat,queso entrecot,,,,
-V056,Tomás Postigo 3er Año,Tomás Postigo,DO Ribera del Duero,Ribera del Duero,"Tempranillo, Cabernet sauvignon, Merlot, Malbec",negre,,"48,00",,,cos elegant barrica,entrecot entrana,,,,
-V057,Punto Geodésico,Bodegas Trus,DO Ribera del Duero,Ribera del Duero,Tempranillo,negre,,"48,00",,,cos fnegra,entrana queso,,,,
-V058,Tomás Postigo Rebollo Quercus Pirenaica,Tomás Postigo,DO Ribera del Duero,Ribera del Duero,"Tempranillo, Cabernet sauvignon, Merlot, Malbec",negre,,,"144,00",,cos barrica elegant,queso entrecot,,,,
-V059,Malpastor Crianza,La Carbonera,DOCa Rioja Alavesa,Rioja,Tempranillo,negre,,"20,50",,,fvermella barrica,entrana costilla,,,,
-V060,Ramón Bilbao Crianza,Bodegas Ramón Bilbao,DOCa Rioja,Rioja,Tempranillo,negre,"4,50","21,50",,,barrica fvermella,costilla tablajamon,,,,
-V061,Ramón Bilbao Edición Limitada,Bodegas Ramón Bilbao,DOCa Rioja,Rioja,Tempranillo,negre,,"24,50","50,00",,barrica fnegra,tablajamon entrana,,,,
-V062,Ramón Bilbao Reserva,Bodegas Ramón Bilbao,DOCa Rioja,Rioja,"Tempranillo, Carinyena, Graciano",negre,,"26,00",,,barrica especiat,entrana costilla,,,,
-V063,Puerto Rubio,Palacios Vinos de Finca,DOCa Rioja,Rioja,Tempranillo,negre,,"56,00",,,elegant cos,entrecot entrana,,,,
-V064,Marqués de Vargas Reserva,Marqués de Vargas,DOCa Rioja,Rioja,"Tempranillo, Garnatxa negra, Carinyena",negre,,"34,50",,,barrica elegant,costilla tablajamon,,,,
-V065,Finca Ladero,Bodegas Ramón Bilbao,DOCa Rioja,Rioja,"Tempranillo, Garnatxa negra",negre,,"84,00",,,elegant cos mineral,entrana queso,,,,
-V066,Beaune du Château Premier Cru,Bouchard Père & Fils,AOC Beaune,Borgonya,Pinot noir,negre,,"75,00",,,elegant fvermella,tataki entrecot,,,,
-V067,Terrer de la Creu Brut Nature,Terrer de la Creu,DO Cava,Cava,"Xarel·lo, Macabeu, Parellada",escumos,"4,90","21,50",,,sec bombolla,jamon anchoas,,,,
-V068,Vilarnau Brut Reserva,Vilarnau,DO Cava,Cava,"Macabeu, Parellada, Xarel·lo",escumos,"4,90","23,50",,,fresc bombolla,anchoas tortillitas,,,,
-V069,Oriol Rossell Mític Gran Reserva,Oriol Rossell,DO Cava,Cava,"Xarel·lo, Macabeu",escumos,,"29,90",,,torrats sec,carpaccio langosta,,,,
-V070,Ariadna Gran Reserva Blanc de Noirs,Oriol Rossell,DO Cava,Cava,"Xarel·lo, Pinot noir",escumos,,"37,50",,,torrats elegant,langosta jamon,,,,
+V001,"L'Àncora, el nostre vi",Marqués de Vizhoja,,Galícia,"Albariño, Loureiro",blanc,"4,10","17,00",,"11,00",fresc afruitat lleuger,mejillones boquerones,,,,img/vinos/V001.webp
+V002,Mar Endins,Celler Oliveda,DO Empordà,Empordà,Garnatxa blanca,blanc,,"21,00",,,fresc afruitat,boquerones calamares,,,,img/vinos/V002.webp
+V003,L'Encís,Vinos del Paseante,DO Empordà,Empordà,"Sauvignon blanc, Garnatxa blanca",blanc,,"21,50",,,aromatic citric,enscalamares atunteriyaki,,,,img/vinos/V003.webp
+V004,Cap de Creus Nacre,Joan Sardà,DO Empordà,Empordà,"Garnatxa blanca, Garnatxa roja",blanc,,"22,90",,,mineral sali,tellarinas carpaccio,,,,img/vinos/V004.webp
+V005,Garoina,Celler Oliveda,DO Empordà,Empordà,Chardonnay,blanc,,"21,50",,,afruitat fresc,calamares mejillones,,,,img/vinos/V005.webp
+V006,Joana,Celler Oliveda,DO Empordà,Empordà,Chardonnay,blanc,,"25,00",,,untuos afruitat,suquet langosta,,,,img/vinos/V006.webp
+V007,Quinze Roures,Espelt Viticultors,DO Empordà,Empordà,"Garnatxa blanca, Garnatxa roja",blanc,,"23,50",,,barrica untuos,langosta merluza,,,,img/vinos/V007.webp
+V008,Mas Oller Mar Blanc,Mas Oller,DO Empordà,Empordà,"Picapoll, Malvasia",blanc,,"24,50",,,fresc sali floral,carpaccio lenguado,,,,img/vinos/V008.webp
+V009,Magnetic Blanc,Torres Icons,DO Catalunya,Catalunya,"Garnatxa blanca, Sauvignon blanc",blanc,,"19,00",,,fresc afruitat,mejillones boquerones,,,,img/vinos/V009.webp
+V010,Les Tortugues,Celler Massís de l'Albera,DO Empordà,Empordà,Garnatxa roja,blanc,,"29,50",,,mineral untuos,lubina dorada,,,,img/vinos/V010.webp
+V011,Viña Esmeralda,Torres Icons,DO Penedès,Penedès,Moscatell,blanc,"4,50","21,00",,,aromatic floral,atunteriyaki gambas,,,,img/vinos/V011.webp
+V012,Jean Leon 3055 Chardonnay,Jean Leon,DO Penedès,Penedès,Chardonnay,blanc,,"22,50",,,afruitat fresc,boquerones calamares,,,,img/vinos/V012.webp
+V013,Fransola,Familia Torres,DO Penedès,Penedès,Sauvignon blanc,blanc,,"40,00",,,barrica aromatic elegant,merluza suquet,,,,img/vinos/V013.webp
+V014,Jean Leon Vinya Gigi Chardonnay,Jean Leon,DO Penedès,Penedès,Chardonnay,blanc,,"36,00",,,barrica untuos,suquet langosta,,,,img/vinos/V014.webp
+V015,Virolet,Oriol Rossell,DO Penedès,Penedès,Xarel·lo,blanc,,"23,00",,,fresc mineral,dorada paella,,,,img/vinos/V015.webp
+V016,Abadal Picapoll,Bodegas Abadal,DO Pla de Bages,Pla de Bages,Picapoll,blanc,,"25,50",,,floral fresc,gambas enscalamares,,,,img/vinos/V016.webp
+V017,Clos Farena,Clos Farena,DOQ Priorat,Priorat,Garnatxa blanca,blanc,,"23,50",,,mineral untuos,paella lubina,,,,img/vinos/V017.webp
+V018,Verdeo,Torres Icons,DO Rueda,Rueda,Verdejo,blanc,,"19,00",,,fresc citric,calamares mejillones,,,,img/vinos/V018.webp
+V019,Ramón Bilbao Verdejo,Bodegas Ramón Bilbao,DO Rueda,Rueda,Verdejo,blanc,"4,50","22,00",,,fresc aromatic,enscalamares atunteriyaki,,,,img/vinos/V019.webp
+V020,Regina Viarum Godello,Regina Viarum,DO Ribeira Sacra,Galícia,Godello,blanc,,"24,50",,,mineral afruitat,lubina dorada,,,,img/vinos/V020.webp
+V021,Godeval,Bodegas Godeval,DO Valdeorras,Galícia,Godello,blanc,,"26,00",,,mineral elegant,dorada paella,,,,img/vinos/V021.webp
+V022,Castillo de Monjardín Chardonnay Reserva,Bodegas Castillo de Monjardín,DO Navarra,Navarra,Chardonnay,blanc,,"23,00",,,barrica untuos,langosta merluza,,,,img/vinos/V022.webp
+V023,Viñas del Vero Chardonnay,Viñas del Vero,DO Somontano,Somontano,Chardonnay,blanc,,"22,00",,,afruitat fresc,mejillones boquerones,,,,img/vinos/V023.webp
+V024,Habla de Ti,Bodegas Habla,VT Extremadura,Extremadura,Sauvignon blanc,blanc,,"23,50",,,aromatic citric,atunteriyaki gambas,,,,img/vinos/V024.webp
+V025,Gómez Cruzado Blanco 2º Año,Gómez Cruzado,DOCa Rioja,Rioja,"Viura, Tempranillo blanco",blanc,,"22,50",,,untuos afruitat,merluza suquet,,,,img/vinos/V025.webp
+V026,Camiño dos Faros,Bodegas Cunqueiro,DO Ribeiro,Galícia,"Treixadura, Torrontés, Palomino",blanc,,"22,50",,,fresc floral,boquerones calamares,,,,img/vinos/V026.webp
+V027,Pazo das Bruxas,Torre Penelas,DO Rías Baixas,Rías Baixas,Albariño,blanc,,"24,00",,,fresc citric sali,lenguado tellarinas,,,,img/vinos/V027.webp
+V028,Pazo de San Mauro,Pazo de San Mauro,DO Rías Baixas,Rías Baixas,Albariño,blanc,,"29,00",,,sali afruitat,tellarinas carpaccio,,,,img/vinos/V028.webp
+V029,Mar de Frades,Mar de Frades,DO Rías Baixas,Rías Baixas,Albariño,blanc,"6,10","32,00","60,00",,sali fresc aromatic,carpaccio lenguado,,,,img/vinos/V029.webp
+V030,Albariño Sanamaro Sobre Lías,Pazo de San Mauro,DO Rías Baixas,Rías Baixas,"Albariño, Loureiro",blanc,,"53,00",,,untuos elegant sali,suquet langosta,,,,img/vinos/V030.webp
+V031,Bouchard La Vignée,Bouchard Père & Fils,AOC Bourgogne Côte d'Or,Borgonya,Chardonnay,blanc,,"39,00",,,elegant mineral,langosta merluza,,,,img/vinos/V031.webp
+V032,Nathalie & Gilles Fèvre Chablis,Domaine Nathalie & Gilles Fèvre,AOC Chablis,Borgonya,Chardonnay,blanc,,"33,00",,,mineral citric,paella lubina,,,,img/vinos/V032.webp
+V033,Mosaic Rosé,Celler Espelt,DO Empordà,Empordà,Garnatxa negra,rosat,,"21,00",,,fresc fvermella,escalivada fritura,,,,img/vinos/V033.webp
+V034,El Visionari,Celler Massís de l'Albera,DO Empordà,Empordà,Garnatxa negra,rosat,,"23,50",,,fvermella lleuger,fritura ensaladilla,,,,img/vinos/V034.webp
+V035,Amic Rosat,Clos d'Agon,DO Empordà,Empordà,"Garnatxa negra, Carinyena, Cabernet franc",rosat,,"25,50",,,fresc fvermella,marmontana fideua,,,,img/vinos/V035.webp
+V036,Viña Esmeralda Rosé,Torres Icons,DO Catalunya,Catalunya,Garnatxa negra,rosat,"4,50","21,50",,,floral lleuger,ensaladilla escalivada,,,,img/vinos/V036.webp
+V037,Alba del Tinar,Clos d'Agon,DO Catalunya,Catalunya,"Cabernet franc, Garnatxa roja",rosat,,"45,00",,,elegant mineral,tataki paella,,,,img/vinos/V037.webp
+V038,Jean Leon 3055 Rosé,Jean Leon,DO Penedès,Penedès,"Pinot noir, Garnatxa negra",rosat,,"22,50",,,fresc fvermella,fideua tataki,,,,img/vinos/V038.webp
+V039,Oriol Rossell Beach Rosé,Oriol Rossell,DO Penedès,Penedès,"Syrah, Garnatxa negra",rosat,,"23,00",,,lleuger fresc,escalivada fritura,,,,img/vinos/V039.webp
+V040,Habla de Ti Rosado,Bodegas Habla,VT Extremadura,Extremadura,"Syrah, Carinyena, Garnatxa negra",rosat,,"24,00",,,lleuger floral,fritura ensaladilla,,,,img/vinos/V040.webp
+V041,Ramón Bilbao Rosado,Bodegas Ramón Bilbao,DOCa Rioja,Rioja,Garnatxa negra,rosat,"4,50","21,50",,,lleuger fvermella,tataki marmontana,,,,img/vinos/V041.webp
+V042,Lalomba,Bodegas Ramón Bilbao,DOCa Rioja,Rioja,"Garnatxa negra, Viura",rosat,,"37,00",,,elegant mineral,paella arroznegro,,,,img/vinos/V042.webp
+V043,La Vieille Ferme Rosé,La Vieille Ferme,AOC Luberon · Vall del Roine,Provença i Roine,"Cinsault, Garnatxa negra, Syrah",rosat,,"22,00",,,lleuger afruitat,ensaladilla escalivada,,,,img/vinos/V043.webp
+V044,Studio by Miraval,Château Miraval,IGP Méditerranée,Provença i Roine,"Cinsault, Garnatxa negra, Rolle, Tibouren",rosat,,"28,00",,,lleuger citric,escalivada fritura,,,,img/vinos/V044.webp
+V045,AIX Rosé,Maison Saint Aix,AOC Côtes de Provence,Provença i Roine,"Syrah, Garnatxa negra, Cinsault",rosat,,"33,50",,,elegant fresc,arroznegro tataki,,,,img/vinos/V045.webp
+V046,Terra de Vents,Celler Oliveda,DO Empordà,Empordà,"Carinyena, Cabernet sauvignon",negre,,"23,00",,,fnegra especiat,entrana costilla,,,,img/vinos/V046.webp
+V047,Encanteri,Celler Massís de l'Albera,DO Empordà,Empordà,"Garnatxa negra, Syrah, Carinyena",negre,,"24,50",,,fvermella especiat,marmontana croquetas,,,,img/vinos/V047.webp
+V048,Perelada 5 Finques Reserva,Perelada,DO Empordà,Empordà,"Merlot, Garnatxa negra, Cabernet sauvignon, Syrah, Tempranillo, Cabernet franc",negre,,"26,50",,,barrica cos,costilla tablajamon,,,,img/vinos/V048.webp
+V049,Flor d'Empordà,Vinyes d'Olivardots,DO Empordà,Empordà,"Carinyena, Garnatxa negra, Syrah",negre,,"48,00",,,cos elegant fnegra,entrecot entrana,,,,img/vinos/V049.webp
+V050,Clos Ancestral,Familia Torres,DO Penedès,Penedès,"Tempranillo, Garnatxa negra, Moneu",negre,,"25,50",,,fvermella fresc,croquetas costilla,,,,img/vinos/V050.webp
+V051,Magnetic,Torres Icons,DO Catalunya,Catalunya,"Garnatxa negra, Syrah",negre,,"19,00",,,afruitat lleuger,costilla marmontana,,,,img/vinos/V051.webp
+V052,Secret del Priorat,Familia Torres,DOQ Priorat,Priorat,"Garnatxa negra, Carinyena, Cabernet sauvignon, Merlot, Syrah",negre,,"28,00",,,cos mineral fnegra,entrana queso,,,,img/vinos/V052.webp
+V053,Celeste Roble,Pago del Cielo,DO Ribera del Duero,Ribera del Duero,Tempranillo,negre,,"21,50",,,afruitat barrica,marmontana croquetas,,,,img/vinos/V053.webp
+V054,Cruz de Alba Crianza,Cruz de Alba,DO Ribera del Duero,Ribera del Duero,Tempranillo,negre,,"29,50",,,barrica cos,tablajamon entrana,,,,img/vinos/V054.webp
+V055,Trus Reserva,Bodegas Trus,DO Ribera del Duero,Ribera del Duero,Tempranillo,negre,,"35,00",,,barrica cos especiat,queso entrecot,,,,img/vinos/V055.webp
+V056,Tomás Postigo 3er Año,Tomás Postigo,DO Ribera del Duero,Ribera del Duero,"Tempranillo, Cabernet sauvignon, Merlot, Malbec",negre,,"48,00",,,cos elegant barrica,entrecot entrana,,,,img/vinos/V056.webp
+V057,Punto Geodésico,Bodegas Trus,DO Ribera del Duero,Ribera del Duero,Tempranillo,negre,,"48,00",,,cos fnegra,entrana queso,,,,img/vinos/V057.webp
+V058,Tomás Postigo Rebollo Quercus Pirenaica,Tomás Postigo,DO Ribera del Duero,Ribera del Duero,"Tempranillo, Cabernet sauvignon, Merlot, Malbec",negre,,,"144,00",,cos barrica elegant,queso entrecot,,,,img/vinos/V058.webp
+V059,Malpastor Crianza,La Carbonera,DOCa Rioja Alavesa,Rioja,Tempranillo,negre,,"20,50",,,fvermella barrica,entrana costilla,,,,img/vinos/V059.webp
+V060,Ramón Bilbao Crianza,Bodegas Ramón Bilbao,DOCa Rioja,Rioja,Tempranillo,negre,"4,50","21,50",,,barrica fvermella,costilla tablajamon,,,,img/vinos/V060.webp
+V061,Ramón Bilbao Edición Limitada,Bodegas Ramón Bilbao,DOCa Rioja,Rioja,Tempranillo,negre,,"24,50","50,00",,barrica fnegra,tablajamon entrana,,,,img/vinos/V061.webp
+V062,Ramón Bilbao Reserva,Bodegas Ramón Bilbao,DOCa Rioja,Rioja,"Tempranillo, Carinyena, Graciano",negre,,"26,00",,,barrica especiat,entrana costilla,,,,img/vinos/V062.webp
+V063,Puerto Rubio,Palacios Vinos de Finca,DOCa Rioja,Rioja,Tempranillo,negre,,"56,00",,,elegant cos,entrecot entrana,,,,img/vinos/V063.webp
+V064,Marqués de Vargas Reserva,Marqués de Vargas,DOCa Rioja,Rioja,"Tempranillo, Garnatxa negra, Carinyena",negre,,"34,50",,,barrica elegant,costilla tablajamon,,,,img/vinos/V064.webp
+V065,Finca Ladero,Bodegas Ramón Bilbao,DOCa Rioja,Rioja,"Tempranillo, Garnatxa negra",negre,,"84,00",,,elegant cos mineral,entrana queso,,,,img/vinos/V065.webp
+V066,Beaune du Château Premier Cru,Bouchard Père & Fils,AOC Beaune,Borgonya,Pinot noir,negre,,"75,00",,,elegant fvermella,tataki entrecot,,,,img/vinos/V066.webp
+V067,Terrer de la Creu Brut Nature,Terrer de la Creu,DO Cava,Cava,"Xarel·lo, Macabeu, Parellada",escumos,"4,90","21,50",,,sec bombolla,jamon anchoas,,,,img/vinos/V067.webp
+V068,Vilarnau Brut Reserva,Vilarnau,DO Cava,Cava,"Macabeu, Parellada, Xarel·lo",escumos,"4,90","23,50",,,fresc bombolla,anchoas tortillitas,,,,img/vinos/V068.webp
+V069,Oriol Rossell Mític Gran Reserva,Oriol Rossell,DO Cava,Cava,"Xarel·lo, Macabeu",escumos,,"29,90",,,torrats sec,carpaccio langosta,,,,img/vinos/V069.webp
+V070,Ariadna Gran Reserva Blanc de Noirs,Oriol Rossell,DO Cava,Cava,"Xarel·lo, Pinot noir",escumos,,"37,50",,,torrats elegant,langosta jamon,,,,img/vinos/V070.webp
 V071,Bottega Gold Prosecco,Bottega,DOC Prosecco,Prosecco,Glera,escumos,,"38,00",,,afruitat floral,bravas fritura,,,,
-V072,Bottega Rosé Gold Brut,Bottega,DOC Prosecco,Prosecco,Pinot noir,escumos,,"38,00",,,fvermella fresc,fritura croquetas,,,,
-V073,Pommery Apanage Brut,Vranken-Pommery,Champagne,Champagne,"Chardonnay, Pinot noir, Pinot meunier",escumos,,"70,00",,,elegant torrats,jamon carpaccio,,,,
-V074,Lia Pet-Nat,Nivarius · Palacios Vinos de Finca,Ancestral,Rioja,Garnatxa negra,escumos,,"22,50",,,lleuger fvermella,croquetas bravas,,,,
+V072,Bottega Rosé Gold Brut,Bottega,DOC Prosecco,Prosecco,Pinot noir,escumos,,"38,00",,,fvermella fresc,fritura croquetas,,,,img/vinos/V072.webp
+V073,Pommery Apanage Brut,Vranken-Pommery,Champagne,Champagne,"Chardonnay, Pinot noir, Pinot meunier",escumos,,"70,00",,,elegant torrats,jamon carpaccio,,,,img/vinos/V073.webp
+V074,Lia Pet-Nat,Nivarius · Palacios Vinos de Finca,Ancestral,Rioja,Garnatxa negra,escumos,,"22,50",,,lleuger fvermella,croquetas bravas,,,,img/vinos/V074.webp
 V075,Floralis,Familia Torres,DO Penedès,Penedès,Moscatell,dolc,"4,50","19,70",,,dolc floral,tatin lemonpie,,,,
 V076,Dow's Fine Tawny,Dow's Port,DO Porto,Porto,"Touriga Nacional, Touriga Franca, Tinta Roriz",dolc,"4,50","21,90",,,dolc torrats,fondant queso,,,,
 V077,Vermouth Padró & Co. Reserva Especial,Padró & Co.,Bràfim,Vermuts i sangries,,dolc,"6,50",,,,dolc especiat,anchoas bravas,,,,
