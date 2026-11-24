@@ -7,14 +7,14 @@
 <title>Carta de vins L'Àncora</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   /* Layout: cabecera corta de marca, barra de filtros fija, lista de vinos por tipo con la botella a la izquierda. */
   :root{
     --bg:#f5f0e6; --band:#efe7d6; --card:#fbf8f1; --ink:#1c3454; --ink-strong:#16283f;
     --gold:#a87a2a; --gold-soft:#c8963e; --muted:#5b6b7a; --hair:rgba(28,52,84,.18);
     --chip-on-bg:#1c3454; --chip-on-fg:#f5f0e6; --grid:rgba(28,52,84,.045);
-    --display:'Playfair Display',Georgia,'Times New Roman',serif;
+    --display:'Cormorant Garamond',Georgia,'Times New Roman',serif;
     --body:'Jost',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
     --fs:1;
   }
@@ -116,6 +116,20 @@
   @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
+<style id="tema-ancora-2026">
+/* Tema L'Àncora 2026: arena, azul marino y dorado; Cormorant Garamond + Jost */
+:root{--bg:#F4EDE1;--band:#EDE3D2;--card:#FFFDF8;--ink:#1A2B45;--ink-strong:#121F33;--gold:#8C6A2B;--gold-soft:#C5A059;--muted:#5B6577;--hair:rgba(26,43,69,.16);--chip-on-bg:#1A2B45;--chip-on-fg:#F4EDE1;--grid:transparent;--display:'Cormorant Garamond',Georgia,serif;--body:'Jost',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0E1724;--band:#132033;--card:#162236;--ink:#EDE5D6;--ink-strong:#F6EFE2;--gold:#D4B474;--gold-soft:#C5A059;--muted:#A9B1BF;--hair:rgba(237,229,214,.18);--chip-on-bg:#C5A059;--chip-on-fg:#0E1724;--grid:transparent}}
+:root[data-theme="dark"]{--bg:#0E1724;--band:#132033;--card:#162236;--ink:#EDE5D6;--ink-strong:#F6EFE2;--gold:#D4B474;--gold-soft:#C5A059;--muted:#A9B1BF;--hair:rgba(237,229,214,.18);--chip-on-bg:#C5A059;--chip-on-fg:#0E1724;--grid:transparent}
+body{background-image:none!important}
+h1{font-weight:600!important}
+.emblem{background:#1A2B45;border-color:#1A2B45!important;color:#C5A059!important}
+.eyebrow,.tagline{letter-spacing:.02em!important;text-transform:none!important}
+.eyebrow{font-size:15px!important;font-weight:500!important}
+.tagline{font-size:16px!important}
+section h2{font-weight:600!important}
+.wine h3{font-weight:600!important;font-size:calc(20px * var(--fs))!important}
+</style>
 </head>
 <body>
 <header class="hero"><div class="wrap">

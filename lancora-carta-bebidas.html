@@ -6,7 +6,7 @@
 <title>L'Àncora · Carta de begudes</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --navy:#1c3454;
@@ -29,7 +29,7 @@
       linear-gradient(90deg, rgba(27,58,63,0.045) 1px, transparent 1px);
     background-size: 34px 34px;
   }
-  h1,h2,h3{ font-family:'Playfair Display', Georgia, serif; font-weight:700; }
+  h1,h2,h3{ font-family:'Cormorant Garamond', Georgia, serif; font-weight:700; }
   a{ color:inherit; }
   .wrap{ max-width:920px; margin:0 auto; padding:0 22px; }
 
@@ -193,7 +193,7 @@
   .cocktail-item .thumb{ width:56px; height:56px; border-radius:8px; object-fit:cover; flex:none; }
   .cocktail-item .content{ flex:1; min-width:0; }
   .cocktail-item .row{ display:flex; justify-content:space-between; align-items:baseline; }
-  .cocktail-item .name{ font-size:calc(19px * var(--fs-scale)); font-weight:600; font-family:'Playfair Display',serif; }
+  .cocktail-item .name{ font-size:calc(19px * var(--fs-scale)); font-weight:600; font-family:'Cormorant Garamond',serif; }
   .cocktail-item .price{ font-size:calc(18px * var(--fs-scale)); font-weight:700; color:var(--gold); }
   .cocktail-item .desc{ font-size:calc(14.5px * var(--fs-scale)); font-style:italic; color:var(--slate); margin-top:2px; max-width:640px; }
 
@@ -202,7 +202,7 @@
     gap:16px; padding:11px 0; border-bottom:1px dotted var(--hair);
   }
   .wine-main{ flex:1; min-width:0; }
-  .wine-name{ font-size:calc(16.5px * var(--fs-scale)); font-weight:600; font-family:'Playfair Display',serif; }
+  .wine-name{ font-size:calc(16.5px * var(--fs-scale)); font-weight:600; font-family:'Cormorant Garamond',serif; }
   .wine-meta{ font-size:calc(12px * var(--fs-scale)); font-style:italic; color:var(--slate); margin-top:2px; }
   .wine-prices{ display:flex; gap:12px; flex:none; }
   .wine-price-chip{ display:flex; flex-direction:column; align-items:flex-end; font-family:'Jost',sans-serif; }
@@ -233,6 +233,40 @@
   footer .anchor-icon{ width:40px; height:40px; opacity:0.85; margin-bottom:14px; }
   footer p{ font-size:calc(13.5px * var(--fs-scale)); letter-spacing:1.5px; text-transform:uppercase; opacity:0.7; line-height:2; }
   footer .leafwrap{ position:absolute; opacity:0.06; }
+</style>
+<style id="tema-ancora-2026">
+/* Tema L'Àncora 2026: arena, azul marino y dorado; Cormorant Garamond + Jost */
+:root{--navy:#1A2B45;--navy-ink:#121F33;--gold:#C5A059;--gold-soft:#DDBF85;--cream:#F4EDE1;--linen:#EDE3D2;--slate:#5B6577;--hair:rgba(26,43,69,.16)}
+body{background-image:none!important;background-color:var(--cream)!important}
+h1,h2,h3{font-weight:600!important}
+.hero{min-height:auto!important;padding:44px 20px 34px!important;background:var(--cream)!important;border-bottom:1px solid var(--hair)}
+.hero::before,.hero::after,.hero .grid-texture,.hero .stars,.hero .bg-anchor-big,.hero .horizon,.hero .scroll-cue{display:none!important}
+.hero .illus{opacity:.28!important}
+.hero .emblem svg.rope{display:none!important}
+.hero .emblem{width:64px!important;height:64px!important;border-radius:50%;background:var(--navy)}
+.hero .emblem svg.anchor-icon{color:var(--gold)!important;width:30px!important;height:30px!important}
+.hero .eyebrow{letter-spacing:.02em!important;text-transform:none!important;font-size:15px!important;font-weight:500!important}
+.hero .tagline{letter-spacing:.01em!important;text-transform:none!important;font-size:16px!important;color:var(--slate)!important;opacity:1!important}
+.hero h1{letter-spacing:0!important}
+nav.catnav{background:rgba(244,237,225,.96)!important}
+.chip{background:#FFFDF8}
+.chip.active{background:var(--navy)!important;color:var(--cream)!important;border-color:var(--navy)!important}
+.cat-head .icon-wrap{background:var(--navy)!important;border-color:var(--navy)!important}
+.cat-head .icon-wrap svg{color:var(--gold)!important}
+.cat-note{letter-spacing:.02em!important;text-transform:none!important;font-size:14px!important}
+.cat-head + .cat-note{background:rgba(197,160,89,.16)!important;font-size:26px!important}
+.item .tag{color:#1A2B45!important}
+.link-card{background:#FFFDF8!important}
+.link-card .icon-wrap{background:var(--navy)!important}
+.link-card .desc{font-style:normal!important}
+footer{background:var(--navy)!important}
+footer p{letter-spacing:.01em!important;text-transform:none!important}
+.wine-cta{display:flex;align-items:center;gap:14px;max-width:880px;margin:18px auto 0;padding:16px 20px;background:var(--navy);color:var(--cream);border-radius:16px;text-decoration:none;box-shadow:0 14px 30px -18px rgba(26,43,69,.7)}
+.wine-cta-txt{display:flex;flex-direction:column;line-height:1.3}
+.wine-cta b{font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;font-weight:600;color:var(--gold)}
+.wine-cta-txt span{font-size:14px;opacity:.85}
+.wine-cta-go{margin-left:auto;font-size:22px;color:var(--gold)}
+@media(max-width:940px){.wine-cta{margin:14px 16px 0}}
 </style>
 </head>
 <body>
@@ -282,6 +316,8 @@
 <nav class="catnav">
   <div class="scroller" id="catnav"></div>
 </nav>
+
+<a class="wine-cta" id="winecta" href="lancora-carta-vins.html"><span class="wine-cta-txt"><b id="winectaT"></b><span id="winectaD"></span></span><span class="wine-cta-go" aria-hidden="true">→</span></a>
 
 <div class="night-banner" id="nightbanner" style="display:none;"></div>
 
@@ -915,6 +951,8 @@ const MENU = {
 };
 
 const UI = {
+  wineT: { ca: "Carta de vins completa", es: "Carta de vinos completa", en: "Full wine list", fr: "Carte des vins complète", nl: "Volledige wijnkaart" },
+  wineD: { ca: "Filtra per DO, varietat i maridatge", es: "Filtra por DO, variedad y maridaje", en: "Filter by region, grape and food pairing", fr: "Filtrez par appellation, cépage et accord", nl: "Filter op streek, druif en gerecht" },
   tagline: { ca: "Carta de begudes · 40 anys vora el mar", es: "Carta de bebidas · 40 años junto al mar", en: "Drinks menu · 40 years by the sea", fr: "Carte des boissons · 40 ans au bord de la mer", nl: "Drankenkaart · 40 jaar aan zee" },
   scroll: { ca: "Fes scroll", es: "Desliza", en: "Scroll down", fr: "Faites défiler", nl: "Scroll naar beneden" },
   tier_legend: { ca: "Preu segons la gamma de la ginebra", es: "Precio según la gama de la ginebra", en: "Price depends on the gin's range", fr: "Prix selon la gamme du gin", nl: "Prijs is afhankelijk van de ginsoort" },
@@ -1179,6 +1217,8 @@ function buildSections(){
 function updateStaticText(){
   document.getElementById('tagline').textContent = t(UI.tagline);
   document.getElementById('scrolltext').textContent = t(UI.scroll);
+  document.getElementById('winectaT').textContent = t(UI.wineT);
+  document.getElementById('winectaD').textContent = t(UI.wineD);
   document.getElementById('footertext').lastChild.textContent = t(UI.footer);
   document.documentElement.lang = LANG;
 }
